@@ -1,5 +1,69 @@
-<div class="main">
-  <div class="grid grid-cols-frmin">
-    <p>hello</p><p class="p-10">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Incidunt, modi.</p>
-  </div>
-</div>
+---
+layout: ind
+title: страницы
+---
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>links</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+        ._progress {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 10rem;
+            padding-bottom: 2vh;
+        }
+
+        ._progress__inner {
+            columns: 2;
+        }
+        ul,ol {
+            /* margin-top: 100px; */
+        }
+        li {
+            font-size: 1.5vmax;
+        }
+        ol {
+            list-style-type: decimal;
+            list-style-position: inside;
+        }
+        ._progress__link {
+            display: inline-block;
+            font-size: 1.5vmax;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: white;
+            transition: opacity 0.3s;
+        }
+        @media(max-width: 1024px) {
+            ._progress__inner {
+                columns: 1;
+            }
+        }
+        @media (any-hover: hover) {
+            ._progress__link:hover {
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="_progress">
+        <div class="_progress__inner">
+            <ol>
+                <li><a href="main.html" class="_progress__link">Главная</a></li>
+            </ol>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,8 +1,112 @@
 .header {
-    @include breakpoint($xl-bp) {
-      position: fixed;
-      top: 0;
-      left: 0;
+  position: fixed;
+  width: 100%;
+  transition: transform .3s, background-color .1s;
+  background-color: transparent;
+  will-change: transform;
+  top: 0;
+  padding-top: 5.6rem;
+  padding-bottom: 5.5rem;
+
+  @include breakpoint($xl-bp) {
+    // position: fixed;
+    // top: 0;
+    // left: 0;
+    width: 100%;
+  }
+  nav {
+    ul {
+      li.active {
+        color: var(--lblue);
+      }
+    }
+  }
+  .scroll-fix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: red;
+    font-size: 3rem;
+  }
+}
+
+.out {
+  transform: translate3d(0, -100%, 0);
+}
+
+
+.header--active {
+  // background-color: rgba(0, 94, 154, 0.25);
+}
+
+.header--menu {
+  @include breakpoint($xl-bp) {
+    height: 100%;
+    .header-text {
+      fill: var(--black);
+    }
+  }
+
+}
+
+.hv-undrl {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0.3rem;
+    left: 0;
+    width: 0;
+    height: 0.1rem;
+    background-color: var(--black);
+    transition: width .3s;
+  }
+
+  &:hover {
+    &::after {
       width: 100%;
     }
+  }
+}
+.hv-undrl.active {
+  &::after {
+    width: 100%;
+  }
+}
+
+
+.hv-undrl--white {
+  &::after {
+    background-color: var(--white);
+  }
+}
+
+.logo {
+  padding: 1rem 2.3rem;
+  background-color: var(--white);
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  width: 16rem;
+  height: 16rem;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.img-contain {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
+.img-cover {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }

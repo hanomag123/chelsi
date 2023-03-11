@@ -11,9 +11,6 @@
 html {
   box-sizing: border-box;
   font-size: calc(100vw / 1920 * 10);
-  @include breakpoint($cos-bp) {
-    font-size: calc(100vw / 1440 * 10);
-  }
 
   @include breakpoint($xl-bp) {
     font-size: calc(100vw / 768 * 10);
@@ -26,7 +23,9 @@ html {
   
 }
 
-
+::-webkit-scrollbar {
+  width: 0;
+}
 
 *,
 *:before,
@@ -35,7 +34,18 @@ html {
 }
 
 body {
-
+  background-color: var(--black);
+  color: var(--black);
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  letter-spacing: -0.021em;
+  @include breakpoint($xl-bp) {
+    font-size: 1.6rem;
+    line-height: 140%;
+  }
 }
 
 img {
@@ -70,18 +80,92 @@ svg {
 }
 
 .container {
-  padding-right: 4rem;
-  padding-left: 4rem;
-  @include breakpoint($cos-bp) {
-    padding-right: 5rem;
-    padding-left: 5rem;
-  }
+  padding-right: 14rem;
+  padding-left: 14rem;
   @include breakpoint($xl-bp) {
-    padding-right: 2rem;
-    padding-left: 2rem;
+    padding-right: 4rem;
+    padding-left: 4rem;
   }
   @include breakpoint($sm-bp) {
     padding-right: 2.5rem;
     padding-left: 2.5rem;
   }
+}
+
+.h1,h1 {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 17rem;
+  line-height: 25.2rem;
+  /* identical to box height */
+  
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  @include breakpoint($xl-bp) {
+    font-size: 6rem;
+    line-height: 8.9rem;
+  }
+}
+
+.h2,h2 {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 6rem;
+  line-height: 120%;
+  /* identical to box height, or 72px */
+  
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  @include breakpoint($xl-bp) {
+    font-size: 6rem;
+    line-height: 8.9rem;
+  }
+}
+
+.h3,h3 {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 3rem;
+  /* identical to box height */
+  
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  @include breakpoint($xl-bp) {
+    font-size: 2.4rem;
+    line-height: 120%;
+  }
+}
+
+.h4,h4 {
+  font-family: 'Oswald';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 2.7rem;
+  /* identical to box height */
+  
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+}
+
+.page-button {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  /* identical to box height */
+  
+  
+  /* 3 */
+  
+  color: var(--white);
+  padding: 1.1rem 3.1rem;
+  border: 0.2rem solid var(--white);
+  border-radius: 5rem;
+  display: inline-block;
 }

@@ -1,22 +1,126 @@
 .menu {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 1;
-  transform: translateX(100%);
-  height: 100%;
-  width: 30%;
-  background-color: lightblue;
-  transition: all 1s ease;
-  display: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
   @include breakpoint($xl-bp) {
     display: block;
-    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    transform: translate3d(100%, 0, 0);
+    width: 100%;
+    transition: all 1s ease;
+    background-color: var(--white);
+    will-change: transform;
+    padding-top: 11.5rem;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    padding-bottom: 1.6rem;
+  }
+
+    li {
+      position: relative;
+    }
+}
+
+.topmenu {
+  display: flex;
+  gap: 4rem;
+}
+
+.plus {
+  position: relative;
+  padding-right: 2.2rem;
+  z-index: 7;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0.8rem;
+    height: 0.2rem;
+    background-color: var(--white);
+    transform: translateY(-50%);
+    top: 50%;
+    right: 0;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    width: 0.8rem;
+    height: 0.2rem;
+    background-color: var(--white);
+    transform: translateY(-50%) rotate(90deg);
+    top: 50%;
+    right: 0;
+    transition: transform .3s;
+  }
+  &:hover {
+    &::before {
+      transform: translateY(-50%);
+    }
   }
 }
 
+.submenu {
+  position: absolute;
+  left: -2rem;
+  z-index: 5;
+  background: var(--dblue);
+  visibility: hidden;
+  opacity: 0; 
+  transform-origin: 0% 0%;
+  transition: .3s linear;
+  padding: 2rem;
+  border-radius: 1rem;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    margin-left: 2rem;
+    width: 65%;
+    max-width: calc(100% - 4rem);
+    background-color: var(--white);
+    height: 0.2rem;
+    border-radius: 0.2rem;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: -5rem;
+    left: 0;
+    width: 100%;
+    height: 5rem;
+    background-color: var(--dblue);
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+  }
+}
+.submenu li {position: relative;}
+
+.submenu .submenu {
+  position: absolute;
+  left: 100%;
+  transition: .3s linear;
+}
+.menu li:hover > .plus {
+    &::before {
+      transform: translateY(-50%);
+    }
+}
+.menu li:hover > .submenu {
+  visibility: visible;
+  opacity: 1;
+}
+
 .menu--open {
-  transform: translateX(0);
+  transform: translate3d(0, 0, 0);
 }
 
 // .menu-button {
@@ -42,6 +146,7 @@
   z-index: 4;
   display: none;
   position: relative;
+  justify-self: flex-end;
   .burger-button-close {
     #first-line-burger,
     #second-line-burger,
@@ -53,13 +158,16 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, -50%);
         transform-origin: center center;
         transition: transform 0.4s ease, opacity 0.4s ease;
     }
 
     #first-line-burger {
         top: 0%;
+    }
+    #second-line-burger {
+      top: 48%;
     }
     #third-line-burger {
         top: unset;
@@ -68,13 +176,11 @@
   }
   @include breakpoint($xl-bp) {
     display: block;
-    margin-left: 3rem;
   }
   @include breakpoint($sm-bp) {
     margin-left: 0;
-    width: 2rem;
-    height: 2rem;
-    margin-right: 0.5rem;
+    width: 3.8rem;
+    height: 2.6rem;
   }
 }
 
@@ -103,8 +209,17 @@
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  background-color: var(--black);
+  opacity: .3;
+}
+
+.botmenu {
+  display: flex;
+  gap: 4rem;
+  align-items: center;
 }

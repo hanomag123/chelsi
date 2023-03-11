@@ -22,7 +22,7 @@ const pug = require('gulp-pug');
 
 /* Paths */
 const srcPath = "src/";
-const distPath = "dist/";
+const distPath = "build/dist/";
 const path = {
   build: {
     html: distPath,
@@ -47,6 +47,7 @@ const path = {
     html: srcPath + "**/*.html",
     js: srcPath + "assets/js/**/*.js",
     css: srcPath + "assets/scss/**/*.scss",
+    vendorcss: srcPath + "assets/js/components/*.css",
     pug: srcPath + "*.pug",
     images:
       srcPath +
@@ -269,6 +270,7 @@ function cleanWithoutImg(cb) {
 function watchFiles() {
   gulp.watch([path.watch.html], gulp.series(html, cssWatch));
   // gulp.watch([path.watch.pug], pugs)
+  gulp.watch([path.watch.css], vendorcss);
   gulp.watch([path.watch.css], cssWatch);
   gulp.watch([path.watch.js], jsWatch);
   gulp.watch([path.watch.images], imagesWatch);
@@ -278,7 +280,7 @@ function watchFiles() {
 }
 
 const buildOld = gulp.series(clean, gulp.parallel(html, css, vendorcss, js, images, fonts));
-const start = gulp.series(cleanWithoutImg, gulp.parallel(html, css, js, fonts));
+const start = gulp.series(cleanWithoutImg, gulp.parallel(html, css, js, fonts, vendorcss));
 const watch = gulp.parallel(start, watchFiles, serve);
 const build = gulp.parallel(buildOld, watchFiles, serve);
 const buildCleanCSS = gulp.series(clean, gulp.parallel(html, cleanCss, js, images, fonts));
