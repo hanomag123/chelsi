@@ -324,6 +324,63 @@ if (inputs.length) {
   })
 }
 
+const dates = document.querySelectorAll('.date-container')
+
+if (dates.length) {
+  dates.forEach(el => {
+    const date1 = document.querySelector('.date-input');
+    const date = new AirDatepicker('.date-input', {
+      container: 'relative',
+      isMobile: true,
+      onHide: () => {
+        date.$el.classList.add('havetext')
+      },
+      autoClose: true,
+    });
+    // new Datepicker(el, {
+    //   toValue: (date) => {
+    //     const arr = date.split(' - ')
+    //     if (arr[0] === '') {
+    //       return
+    //     }
+    //     date1.value = date
+    
+    //     arr.forEach((el, i) => {
+    //       if (i === 0) {
+    //         // start.value = el
+    //       }
+    //       if (i === 1) {
+    //         // end.value = el
+    //         if (picker.length) {
+    //           picker.forEach(el => {
+    //             if (el._isOpen) {
+    //               el.hide()
+    //             }
+    //           })
+    //         }
+    //       } else {
+    //         // end.value = ''
+    //       }
+    //     })
+    //   }
+    // });
+  })
+
+  
+}
+
+const airPick = new AirDatepicker('.only-time', {
+  container: 'relative',
+  isMobile: true,
+  dateFormat: ' ',
+  timepicker: true,
+  classes: 'only-timepicker',
+  onHide: () => {
+    airPick.$el.classList.add('havetext')
+  }
+});
+
+
 })
 
 
