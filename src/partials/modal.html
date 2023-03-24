@@ -1,0 +1,50 @@
+<div class="regModal bg-[rgba(0,0,0,0.6)] fixed top-0 left-0 w-full h-full z-[1000] flex items-center justify-center p-20 opacity-0"
+  id="modal" hidden>
+
+  <div class="p-80 xl:p-35 relative rounded-10 bg-dblue w-max max-h-[80rem] xl:max-h-full overflow-auto">
+    <button class="close-button absolute top-40 xl:top-15 right-40 xl:right-15">
+      <svg class="w-24 h-24">
+        <use href='#crossIcon'></use>
+      </svg>
+    </button>
+
+    <form action="#" class="flex flex-col gap-30 xl:gap-20 max-w-640">
+      <div class="pb-20 sm:pb-10 custom-border-full">
+        <h2 class="page-h2 xl:h3-mob text-white"><span class="xl:hidden">Забронируйте стол в нашем пабе</span><span class="hidden xl:block">Бронирование стола</span></h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-1 gap-20">
+        <div class="input-container relative w-full">
+          <input type="text" name="name" class="custom-input w-full" required>
+          <div class="input-placeholder">Имя</div>
+        </div>
+
+        <div class="input-container relative w-full">
+          <input type="number" name="name" class="custom-input w-full" required>
+          <div class="input-placeholder">Количество гостей</div>
+        </div>
+  
+        <div class="input-container relative w-full">
+          <input type="tel" name="tel" class="custom-input w-full" required>
+          <div class="input-placeholder">Телефон</div>
+        </div>
+  
+        <div class="input-container relative w-full">
+          <input type="email" name="mail" class="custom-input w-full" required>
+          <div class="input-placeholder">E-mail</div>
+        </div>
+
+        <div class="input-container relative w-full col-span-2 sm:col-span-1">
+          <textarea name="wishes" class="custom-textarea w-full" required></textarea>
+          <div class="input-placeholder">Ваши пожелания (необязательно)</div>
+        </div>
+      </div>
+
+      <div class="flex gap-20 sm:flex-col">
+        <button type="submit" class="page-button">Забронировать</button>
+        <div class="opacity-40 text-white">Нажимая кнопку, вы соглашаетесь с политикой обработки <a href="#" class="underline">персональных данных</a></div>
+      </div>
+
+    </form>
+  </div>
+</div>

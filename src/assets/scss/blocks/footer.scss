@@ -1,0 +1,32 @@
+.footer-mid {
+  position: relative;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  @include breakpoint($xl-bp) {
+    padding-top: 11rem;
+    padding-bottom: 4rem;
+  }
+  &::before {
+    top: 0;
+  }
+  &::after {
+    bottom: 0;
+  }
+  &::after, &::before {
+    content: '';
+    width: 100%;
+    height: 0.2rem;
+    border-radius: 0.2rem;
+    background-color: var(--white);
+    position: absolute;
+    left: 0;
+  }
+  display: grid;
+  grid-template-columns: repeat(2, 66rem);
+  gap: 18rem;
+  justify-content: space-between;
+  @include breakpoint($xl-bp) {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 4rem;
+  }
+}

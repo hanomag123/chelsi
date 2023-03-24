@@ -1,17 +1,11 @@
 .header {
   position: fixed;
   width: 100%;
-  transition: transform .3s, background-color .1s;
-  background-color: transparent;
+  transition: transform .3s;
   will-change: transform;
   top: 0;
-  padding-top: 5.6rem;
-  padding-bottom: 5.5rem;
-
+  z-index: 20;
   @include breakpoint($xl-bp) {
-    // position: fixed;
-    // top: 0;
-    // left: 0;
     width: 100%;
   }
   nav {
@@ -21,22 +15,29 @@
       }
     }
   }
-  .scroll-fix {
-    position: fixed;
-    top: 0;
-    left: 0;
-    color: red;
-    font-size: 3rem;
+  .header__inner {
+    padding-top: 5.6rem;
+    padding-bottom: 4.5rem;
+    transition: background-color .3s;
+    @include breakpoint($xl-bp) {
+      padding-top: 0;
+      padding-bottom: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 }
 
 .out {
-  transform: translate3d(0, -100%, 0);
+  transform: translate3d(0, calc(-100% - 1rem), 0);
 }
 
 
 .header--active {
-  // background-color: rgba(0, 94, 154, 0.25);
+  .header__inner {
+      background-color: var(--black);
+  }
 }
 
 .header--menu {
@@ -89,13 +90,21 @@
   border-bottom-right-radius: 1rem;
   width: 16rem;
   height: 16rem;
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  @include breakpoint($xl-bp) {
+    width: 6.9rem;
+    height: 7.5rem;
+    border-radius: 0px 0px 0.43rem 0.43rem;
+    padding: 0.43rem 1rem;
+    z-index: 1;
+  }
 }
 
+
+
 .img-contain {
+  &:focus {
+    outline: none;
+  }
   img {
     width: 100%;
     height: 100%;
@@ -104,6 +113,9 @@
 }
 
 .img-cover {
+  &:focus {
+    outline: none;
+  }
   img {
     width: 100%;
     height: 100%;

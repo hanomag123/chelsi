@@ -3,71 +3,69 @@ document.addEventListener("DOMContentLoaded", () => {
   const xl = matchMedia('(max-width: 1024px)')
 
   class Menu {
-    constructor(menuElement, buttonElement, logo) {
+    constructor(menuElement, buttonElement) {
+      this.header = document.querySelector('header');
       this.menu = typeof menuElement === "string" ? document.querySelector(menuElement) : menuElement;
       this.button = typeof buttonElement === "string" ? document.querySelector(buttonElement) : buttonElement;
       this.overlay = document.createElement('div');
       this.overlay.hidden = true;
-      this.buttons = this.menu.querySelectorAll('a')
-      this.logo = logo
-      this._init()
-    }
+      this._init();
+    };
 
     _init() {
-      document.body.appendChild(this.overlay)
-      this.overlay.classList.add('overlay')
+      document.body.appendChild(this.overlay);
+      this.overlay.classList.add('overlay');
 
-      if (this.buttons.length) {
-        this.buttons.forEach(el => {
-          el.addEventListener('click', this.closeMenu.bind(this))
-        })
-      }
-      if (this.logo) {
-        this.logo.addEventListener('click', this.closeMenu.bind(this))
-      }
-      this.overlay.addEventListener('click', this.toggleMenu.bind(this))
-      this.button.addEventListener('click', this.toggleMenu.bind(this))
-    }
+      this.overlay.addEventListener('click', this.toggleMenu.bind(this));
+      this.button.addEventListener('click', this.toggleMenu.bind(this));
+    };
 
     toggleMenu() {
-      this.menu.classList.toggle('menu--open')
-      this.button.classList.toggle('menu-button--active')
-      this.overlay.hidden = !this.overlay.hidden
+      this.menu.classList.toggle('menu--open');
+      this.button.classList.toggle('menu-button--active');
+      this.overlay.hidden = !this.overlay.hidden;
 
       if (this.isMenuOpen()) {
-        this.disableScroll()
+        this.header.classList.add('header--menu');
+        this.disableScroll();
       } else {
-        this.enableScroll()
-      }
-    }
+        this.enableScroll();
+        if (this.header.classList.contains('header--menu')) {
+          this.menu.addEventListener('transitionend', this.bindFunc);
+        };
+      };
+    };
 
+    bindFunc = () => {
+      this.hideaftertransition();
+    };
+
+    hideaftertransition() {
+      if (this.header.classList.contains('header--menu') && !this.isMenuOpen()) {
+        this.header.classList.remove('header--menu');
+      };
+      this.menu.removeEventListener('transitionend', this.bindFunc);
+
+    };
     closeMenu() {
-      this.menu.classList.remove('menu--open')
-      this.button.classList.remove('menu-button--active')
-      this.overlay.hidden = true
-
-      this.enableScroll()
-    }
+      this.menu.classList.remove('header__nav--active');
+      this.button.classList.remove('header__menu-button--active');
+      this.overlay.hidden = true;
+      this.enableScroll();
+    };
 
     isMenuOpen() {
-      return this.menu.classList.contains('menu--open')
-    }
+      return this.menu.classList.contains('menu--open');
+    };
 
     disableScroll() {
-        // Get the current page scroll position
-        const scrollTop = window.pageYOffset  || document.documentElement.scrollTop;
-        const scrollLeft = window.pageXOffset  || document.documentElement.scrollLeft;
-      
-            // if any scroll is attempted, set this to the previous value
-            window.onscroll = function() {
-                window.scrollTo(scrollLeft, scrollTop);
-            };
-    }
+      document.documentElement.classList.add('no-scroll');
+    };
 
     enableScroll() {
-      window.onscroll = function() {};
-    }
-  }
+      document.documentElement.classList.remove('no-scroll');
+    };
+  };
 
   const menu = document.querySelector('.menu')
   const menuButton = document.querySelector('.menu-button')
@@ -149,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updSwiperNumericPagination() {
     const index = this.realIndex + 1
-    this.el.querySelector(".swiper-counter").innerHTML = '<span class="count">' + (index < 10 ? '0' + index : index) + '</span>/<span class="total">/' + (numberOfSlides < 10 ? '0' + numberOfSlides : numberOfSlides) + "</span>";
+    this.el.querySelector(".swiper-counter").innerHTML = '<span class="count">' + (index < 10 ? '0' + index : index) + '</span><span class="total">/' + (numberOfSlides < 10 ? '0' + numberOfSlides : numberOfSlides) + "</span>";
   }
 
   const swiper = new Swiper('.grid-block__swiper', {
@@ -165,26 +163,166 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-    const swiper2 = new Swiper('.magazine-swiper', {
+  const swiper3 = new Swiper('.hit-swiper', {
+    loop: true,
+    spaceBetween: 10,
+    navigation: {
+      nextEl: '.hit .next',
+      prevEl: '.hit .prev',
+    },
+  });
+
+  const swiper2 = new Swiper('.magazine-swiper', {
     loop: true,
     effect: "creative",
     speed: 400,
     creativeEffect: {
-      prev: {
+      next: {
         translate: [0, 0, -400],
         opacity: 0,
       },
-      next: {
-        translate: ["100%", 0, 0],
+      prev: {
+        translate: ["-100%", 0, 0],
         opacity: 0,
       },
+    },
+    on: {
+      slideChangeTransitionEnd: function () {
+        const nextText = this.el.querySelectorAll('.swiper-slide-next')[0];
+        const prevText = this.el.querySelectorAll('.swiper-slide-prev')[0]
+        const next = this.el.querySelector('.next .swiper-title-text');
+        const prev = this.el.querySelector('.prev .swiper-title-text');
+        if (nextText && prevText) {
+          if (nextText.dataset.title === prevText.dataset.title) {
+            const nextTextNew = this.el.querySelectorAll('.swiper-slide-duplicate-active')[0].nextElementSibling;
+            const prevTextNew = this.el.querySelectorAll('.swiper-slide-duplicate-active')[0].previousElementSibling;
+            if (next && prev && nextTextNew && prevTextNew) {
+              next.innerHTML = `<span>${nextTextNew.dataset.title}</span>`;
+              prev.innerHTML = `<span>${prevTextNew.dataset.title}</span>`;
+            }
+            return
+          }
+        }
+        if (nextText && next) {
+          next.innerHTML = `<span>${nextText.dataset.title}</span>`
+        }
+        if (prevText && prev) {
+          prev.innerHTML = `<span>${prevText.dataset.title}</span>`
+        }
+      }
     },
     navigation: {
       nextEl: '.magazine-swiper .next',
       prevEl: '.magazine-swiper .prev',
     },
+  });
+
+  let swiper4 = null;
+
+if (xl.matches) {
+  swiper4 = new Swiper('.services-swiper', {
+    loop: true,
+    slidesPerView: 'auto',
+    spaceBetween: 0,
+  });
+};
+
+xl.addEventListener('change', () => {
+  if (xl.matches) {
+    swiper4 = new Swiper('.services-swiper', {
+      loop: true,
+      slidesPerView: 'auto',
+      spaceBetween: 0,
+    });
+  } else {
+    swiper4.destroy(true, true);
+  };
 });
 
+function modalHandler() {
+  const modal = document.querySelector(`${this.dataset?.modal}`) || this
+  if (modal.classList.contains('regModal') && modal.hidden) {
+    disableScroll();
+  } else {
+    enableScroll();
+  }
+  if (modal) {
+    if (modal.hidden) {
+      modal.hidden = !modal.hidden
+      modal.style.setProperty('pointer-events', 'auto');
+      setTimeout(() => {
+        modal.style.opacity = 1
+      }, 10);
+    } else {
+      modal.style.opacity = 0
+      modal.style.setProperty('pointer-events', null);
+      const numb = Number(getComputedStyle(modal).transitionDuration.match(/(\d+\.\d+)|(\d+)/g)[0]);
+      if (numb > 0) {
+        modal.addEventListener('transitionend', hideaftertransition);
+      } else {
+        modal.hidden = true
+      }
+    }
+  }
+}
+
+function disableScroll() {
+  // Get the current page scroll position
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+  document.documentElement.style.setProperty('scroll-behavior', 'auto');
+
+  // if any scroll is attempted, set this to the previous value
+  window.onscroll = function () {
+    window.scrollTo(scrollLeft, scrollTop);
+  };
+}
+
+function enableScroll() {
+  document.documentElement.style.setProperty('scroll-behavior', null);
+  window.onscroll = function () { };
+}
+
+
+const regModal = document.querySelectorAll('.regModal');
+
+if (regModal) {
+  regModal.forEach(el => {
+    el.addEventListener('click', function () {
+      if (event.target.classList.contains('regModal')) {
+        modalHandler.apply(this);
+      }
+    });
+    const closeButton = el.querySelector('.close-button');
+    if (closeButton) {
+      closeButton.addEventListener('click', () => {
+        modalHandler.apply(el);
+      });
+    }
+  });
+}
+
+const buttonsModal = document.querySelectorAll('[data-modal]');
+
+function hideaftertransition() {
+  this.hidden = true
+  this.removeEventListener('transitionend', hideaftertransition);
+}
+
+if (buttonsModal.length) {
+  buttonsModal.forEach(el => el.addEventListener('click', modalHandler));
+}
+
+
+const inputs = document.querySelectorAll('input,textarea')
+if (inputs.length) {
+  inputs.forEach(el => {
+    el.value ? el.classList.add('havetext') : el.classList.remove('havetext')
+    el.addEventListener('input', function () {
+      this.value ? this.classList.add('havetext') : this.classList.remove('havetext')
+    })
+  })
+}
 
 })
 

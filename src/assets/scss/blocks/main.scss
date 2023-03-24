@@ -13,6 +13,10 @@
     top: 38rem;
     
     background: linear-gradient(360deg, #0F111D 51.15%, rgba(15, 17, 29, 0) 100%);
+    @include breakpoint($xl-bp) {
+      height: 32.8rem;
+      top: 39.7rem;
+    }
   }
 }
 
@@ -54,6 +58,9 @@
   padding-bottom: 2.2rem;
   height: min-content;
   position: relative;
+  @include breakpoint($xl-bp) {
+    padding-bottom: 1.2rem;
+  }
   &::before {
     content: '';
     position: absolute;
@@ -69,6 +76,9 @@
 .custom-text {
   p + p {
     margin-top: 2rem;
+    @include breakpoint($xl-bp) {
+      margin-top: 1rem;
+    }
   }
 }
 
@@ -78,10 +88,16 @@
 .grid-block__img1 {
   grid-column: 1 / 2;
   grid-row: -1 / 1;
+  @include breakpoint($xl-bp) {
+    height: 61.9rem;
+  }
 }
 .grid-block__img2 {
   grid-column: 2 / 3;
   grid-row: 1 / 2;
+  @include breakpoint($xl-bp) {
+    height: 22rem;
+  }
 }
 .grid-block__text {
   grid-column: 2 / 3;
@@ -91,6 +107,9 @@
   grid-column: 2 / 3;
   grid-row: 3 / 4;
   align-self: flex-end;
+  @include breakpoint($xl-bp) {
+    align-self: flex-start;
+  }
 }
 .grid-block__subtitle {
   grid-column: 3 / 4;
@@ -117,12 +136,20 @@
     bottom: 4rem;
     right: 4rem;
     z-index: 10;
+    @include breakpoint($xl-bp) {
+      bottom: 1rem;
+      right: 1rem;
+    }
   }
   .count {
     position: absolute;
     top: 4rem;
     left: 4rem;
     z-index: 10;
+    @include breakpoint($xl-bp) {
+      top: 1rem;
+      left: 1rem;
+    }
   }
 }
 
@@ -140,10 +167,222 @@
   }
 }
 
-.hit-swiper {
+.hit-two-column {
   .swiper-slide {
     display: grid;
     grid-template-columns: 52rem 52rem;
     gap: 4rem;
+    @include breakpoint($xl-bp) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+    }
   }
+}
+
+.swiper-title-text {
+  @include breakpoint($xl-bp) {
+    display: none;
+  }
+}
+.swiper-title-text > * {
+  animation: fadeEffect 1s ease-in-out;
+}
+
+/* Go from zero to full opacity */
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.services-swiper {
+  .swiper-wrapper {
+    @apply grid grid-cols-3 xl:flex gap-40 xl:gap-0;
+  }
+  .swiper-slide {
+    @include breakpoint($xl-bp) {
+      width: 100%;
+      margin-right: 4rem;
+    }
+    @include breakpoint($sm-bp) {
+      margin-right: 2.5rem;
+    }
+  }
+}
+
+.custom-border-desc {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.2rem;
+    border-radius: 0.2rem;
+    background-color: var(--white);
+    @include breakpoint($xl-bp) {
+      content: unset;
+    }
+  }
+}
+.custom-border-mobile {
+  position: relative;
+  &::before {
+    content: unset;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.2rem;
+    border-radius: 0.2rem;
+    background-color: var(--white);
+    @include breakpoint($xl-bp) {
+      content: '';
+    }
+  }
+}
+.custom-border-full {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.2rem;
+    border-radius: 0.2rem;
+    background-color: var(--white);
+  }
+}
+
+.custom-img {
+  @apply absolute bottom-[-36rem] xl:left-20 xl:-bottom-80 h-[71.2rem] xl:h-[30rem] sm:h-180;
+  @include breakpoint($xl-bp) {
+    width: calc(100% - 4rem);
+  }
+}
+
+.regModal {
+  transition: opacity .3s;
+}
+
+.input-container {
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  color: var(--white);
+  textarea {
+    height: 10.5rem;
+  }
+}
+
+textarea {
+  resize: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Change autocomplete styles in WebKit */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: var(--white);
+  -webkit-box-shadow: 0 0 0px 1000px var(--dblue) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+.custom-input {
+  border: 0.1rem solid rgba(255, 255, 255, 0.4);
+  border-radius: 0.5rem;
+  background-color: transparent;
+  /* identical to box height */
+  
+  
+  /* 3 */
+  padding: 2.6rem 1.2rem 0.9rem;
+
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  color: var(--white);
+
+  &:focus {
+    outline: none;
+    border-color: var(--white);
+  }
+  &:focus + .input-placeholder, &:valid + .input-placeholder, &:disabled + .input-placeholder {
+    font-size: 1rem;
+    line-height: 1.4rem;
+    opacity: 1;
+    top: 1.2rem;
+  }
+}
+.custom-input.havetext + .input-placeholder {
+  font-size: 1rem;
+  line-height: 1.4rem;
+  opacity: 1;
+  top: 1.2rem;
+}
+.custom-textarea.havetext + .input-placeholder {
+  font-size: 1rem;
+  line-height: 1.4rem;
+  opacity: 1;
+  top: 1.2rem;
+}
+.custom-textarea {
+  border: 0.1rem solid rgba(255, 255, 255, 0.4);
+  border-radius: 0.5rem;
+  background-color: transparent;
+  /* identical to box height */
+  
+  
+  /* 3 */
+  padding: 2.6rem 1.2rem 0.9rem;
+
+  font-family: 'Manrope';
+  font-weight: 500;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  color: var(--white);
+
+  &:focus {
+    outline: none;
+    border-color: var(--white);
+  }
+  &:focus + .input-placeholder, &:disabled + .input-placeholder {
+    font-size: 1rem;
+    line-height: 1.4rem;
+    opacity: 1;
+    top: 1.2rem;
+  }
+}
+
+.input-placeholder {
+  position: absolute;
+  top: 1.75rem;
+  left: 1.2rem;
+  opacity: 0.4;
+  transition: all .3s;
+  pointer-events: none;
 }

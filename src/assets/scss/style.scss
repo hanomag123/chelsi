@@ -67,6 +67,7 @@ svg {
 @import './blocks/swiper.scss';
 @import './blocks/main.scss';
 @import './blocks/header.scss';
+@import './blocks/footer.scss';
 
 
 
@@ -87,8 +88,8 @@ svg {
     padding-left: 4rem;
   }
   @include breakpoint($sm-bp) {
-    padding-right: 2.5rem;
-    padding-left: 2.5rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
   }
 }
 
@@ -119,8 +120,7 @@ svg {
   letter-spacing: -0.05em;
   text-transform: uppercase;
   @include breakpoint($xl-bp) {
-    font-size: 6rem;
-    line-height: 8.9rem;
+    font-size: 4.2rem;
   }
 }
 
@@ -168,4 +168,18 @@ svg {
   border: 0.2rem solid var(--white);
   border-radius: 5rem;
   display: inline-block;
+  text-align: center;
+
+  transition: .3s color, .3s background-color;
+  &:hover {
+    background-color: var(--white);
+    color: var(--black);
+  }
+  @include breakpoint($sm-bp) {
+    width: 100%;
+  }
+}
+
+.no-scroll {
+  overflow: hidden;
 }
