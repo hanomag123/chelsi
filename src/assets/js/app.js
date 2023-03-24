@@ -328,8 +328,8 @@ const dates = document.querySelectorAll('.date-container')
 
 if (dates.length) {
   dates.forEach(el => {
-    const date1 = document.querySelector('.date-input');
-    const date = new AirDatepicker('.date-input', {
+    const date1 = el.querySelector('.date-input');
+    const date = new AirDatepicker(date1, {
       container: 'relative',
       isMobile: true,
       onHide: () => {
