@@ -1,4 +1,4 @@
-<div class="regModal bg-[rgba(0,0,0,0.6)] fixed top-0 left-0 w-full h-full z-[1000] flex items-center justify-center p-20 opacity-0"
+<div class="regModal bg-[rgba(0,0,0,0.6)] fixed top-0 left-0 w-full h-full z-[1000] flex items-center justify-center py-20 opacity-0"
   id="modal" hidden>
 
   <div class="p-80 xl:p-35 relative rounded-10 bg-dblue w-max max-h-[80rem] xl:max-h-full overflow-auto">
@@ -8,7 +8,7 @@
       </svg>
     </button>
 
-    <form action="#" class="flex flex-col gap-30 xl:gap-20 max-w-640">
+    <form action="#" class="flex flex-col gap-40 xl:gap-20 max-w-640">
       <div class="pb-20 sm:pb-10 custom-border-full">
         <h2 class="page-h2 xl:h3-mob text-white"><span class="xl:hidden">Забронируйте стол в нашем пабе</span><span class="hidden xl:block">Бронирование стола</span></h2>
       </div>
@@ -34,6 +34,18 @@
           <div class="input-placeholder">E-mail</div>
         </div>
 
+        <div class="input-container relative w-full date-container">
+          <input type="text" name="date" class="custom-input w-full date-input" required autocomplete="off">
+          <div class="input-placeholder">Дата</div>
+          <svg class="w-24 h-24 top-18 right-12 absolute fill-transparent opacity-40"><use href='#datepickerIcon'></use></svg>
+        </div>
+
+        <div class="input-container relative w-full">
+          <input type="text" class="custom-input w-full only-time datepicker-here" name="time" required/>
+          <div class="input-placeholder">Время</div>
+          <svg class="w-24 h-24 top-18 right-12 absolute fill-transparent opacity-40"><use href='#timepickerIcon'></use></svg>
+        </div>
+
         <div class="input-container relative w-full col-span-2 sm:col-span-1">
           <textarea name="wishes" class="custom-textarea w-full" required></textarea>
           <div class="input-placeholder">Ваши пожелания (необязательно)</div>
@@ -42,7 +54,7 @@
 
       <div class="flex gap-20 sm:flex-col">
         <button type="submit" class="page-button">Забронировать</button>
-        <div class="opacity-40 text-white">Нажимая кнопку, вы соглашаетесь с политикой обработки <a href="#" class="underline">персональных данных</a></div>
+        <div class="opacity-40 text-white brnone xl:brblock">Нажимая кнопку, вы соглашаетесь<br> с политикой обработки <a href="#" class="underline">персональных данных</a></div>
       </div>
 
     </form>

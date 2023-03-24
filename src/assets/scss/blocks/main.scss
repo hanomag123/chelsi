@@ -278,6 +278,10 @@
   font-size: 1.8rem;
   line-height: 2.5rem;
   color: var(--white);
+  @include breakpoint($xl-bp) {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
   textarea {
     height: 10.5rem;
   }
@@ -327,6 +331,10 @@ select:-webkit-autofill:focus {
   line-height: 2.5rem;
   color: var(--white);
 
+  @include breakpoint($xl-bp) {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+  }
   &:focus {
     outline: none;
     border-color: var(--white);
@@ -377,7 +385,9 @@ select:-webkit-autofill:focus {
     top: 1.2rem;
   }
 }
-
+.custom-textarea+.input-placeholder {
+  top: 1.2rem;
+}
 .input-placeholder {
   position: absolute;
   top: 1.75rem;
@@ -385,4 +395,14 @@ select:-webkit-autofill:focus {
   opacity: 0.4;
   transition: all .3s;
   pointer-events: none;
+}
+
+::-webkit-datetime-edit-year-field:not([aria-valuenow]),
+::-webkit-datetime-edit-month-field:not([aria-valuenow]),
+::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
+    color: transparent;
+}
+
+.date-input {
+  padding-right: 3.6rem;
 }
