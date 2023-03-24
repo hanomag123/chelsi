@@ -66,11 +66,13 @@ svg {
 @import './blocks/menu.scss';
 @import './blocks/swiper.scss';
 @import './blocks/main.scss';
+@import './blocks/menuPage.scss';
 @import './blocks/header.scss';
 @import './blocks/footer.scss';
 @import './blocks/datepicker.scss';
 @import './blocks/timepicker.scss';
 @import './blocks/airdatepicker.scss';
+
 
 
 
@@ -185,4 +187,13 @@ svg {
 
 .no-scroll {
   overflow: hidden;
+}
+
+.activeBreadCrumbs {
+  color: #FFFFFF !important;
+  opacity: 1 !important;
+}
+
+.hidden {
+  display: none;
 }

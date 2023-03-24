@@ -383,6 +383,16 @@ const airPick = new AirDatepicker('.only-time', {
 
 })
 
+let menuBtns = document.querySelectorAll('.menuPage-menuContent_listContainer button')
+let menuItemsContainer = document.querySelector('.menuPage-menuContent__menuItemsContainer')
+
+menuBtns.forEach(e => {
+  e.addEventListener('click', el => {
+    menuItemsContainer.innerHTML = e.nextElementSibling.innerHTML
+    // console.log(e.nextElementSibling)
+  })
+})
+
 
 
 

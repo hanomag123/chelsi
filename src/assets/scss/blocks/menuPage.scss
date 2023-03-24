@@ -1,0 +1,118 @@
+.breadCrumbs {
+
+    display: flex;
+    gap: 2rem;
+
+    li {
+        font-weight: 500;
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+        color: #FFFFFF;
+        opacity: 0.4;
+    }
+
+
+}
+
+.menuPage {
+    padding-top: 14rem;
+
+    h2 {
+        margin-top: 4rem;
+        color: #FFFFFF;
+    }
+
+    .menuPage-menuContent {
+        margin-top: 8rem;
+
+        .menuPage-menuContent_listContainer {
+            padding-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 0.2rem solid #FFFFFF;
+
+            button {
+                font-family: 'Oswald';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 2rem;
+                line-height: 3rem;
+                letter-spacing: -0.05em;
+                text-transform: uppercase;
+                color: #FFFFFF;
+                opacity: 0.4;
+            }
+
+            .menuPage-menuContent_rightBlock {
+                display: flex;
+                gap: 4.2rem;
+            }
+
+        }
+    }
+
+    .menuPage-menuContent__menuItemsContainer {
+
+        .menuPage-menuContent__menuItem {
+            padding: 8rem;
+            background: #162032;
+            border-radius: 1rem;
+            width: 48.8%;
+
+
+            h2 {
+                padding-bottom: 2rem;
+                border-bottom: 0.2rem solid #FFFFFF;
+            }
+
+            ul {
+                margin-top: 6rem;
+                display: flex;
+                flex-direction: column;
+                gap: 4rem;
+
+                li {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .menuPage-menuContent__textContainer {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+
+                        .menuPage-menuContent__title {
+                            font-family: 'Oswald';
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 2rem;
+                            line-height: 3rem;
+                            letter-spacing: -0.05em;
+                            text-transform: uppercase;
+                            color: #FFFFFF;
+                        }
+
+                        .menuPage-menuContent__subtitle {
+                            font-weight: 500;
+                            font-size: 1.4rem;
+                            line-height: 1.9rem;
+                            color: #FFFFFF;
+                            opacity: 0.4;
+                        }
+                    }
+
+                    .menuPage-menuContent__priceContainer {
+                        font-family: 'Oswald';
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 2rem;
+                        line-height: 3rem;
+                        text-align: right;
+                        letter-spacing: -0.05em;
+                        text-transform: uppercase;
+                        color: #FFFFFF;
+                    }
+                }
+            }
+        }
+    }
+}
