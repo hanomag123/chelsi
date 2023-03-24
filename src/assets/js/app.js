@@ -393,6 +393,8 @@ menuBtns.forEach(e => {
   })
 })
 
+menuBtns[0].click()
+
 
 
 
