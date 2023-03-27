@@ -385,11 +385,47 @@ const airPick = new AirDatepicker('.only-time', {
 
 let menuBtns = document.querySelectorAll('.menuPage-menuContent_listContainer button')
 let menuItemsContainer = document.querySelector('.menuPage-menuContent__menuItemsContainer')
+let menuLeft = document.querySelector('.menuPage-menuContent__leftBlock')
+let menuRight = document.querySelector('.menuPage-menuContent__rightBlock')
+let counter = 0
+let arr1 = []
+let arr2 = []
 
 menuBtns.forEach(e => {
   e.addEventListener('click', el => {
-    menuItemsContainer.innerHTML = e.nextElementSibling.innerHTML
-    // console.log(e.nextElementSibling)
+    // menuItemsContainer.innerHTML = e.nextElementSibling.innerHTML
+    // console.log(e.nextElementSibling.querySelectorAll('.menuPage-menuContent__menuItem'))
+    let menuItems = e.nextElementSibling.querySelectorAll('.menuPage-menuContent__menuItem')
+    // console.log(menuItems.length)
+    counter = 0
+    menuItems.forEach((e, id) => {
+      if (id % 2 == 0 && counter < menuItems.length - 1) {
+        
+        let a = document.createElement('div')
+        a.classList.add('helperContainer')
+        a.innerHTML = e.innerHTML
+        menuLeft.appendChild(a)
+        counter + 1
+      }else if (id % 2 != 0 && counter < menuItems.length - 1) {
+        let a = document.createElement('div')
+        a.classList.add('helperContainer')
+        a.innerHTML = e.innerHTML
+        menuRight.appendChild(a)
+        counter + 1
+      }
+    })
+
+    console.log(arr2)
+
+    // for (let i = 0; i < menuItems.length; i++) {
+    //   if(i < menuItems.length && i % 2 == 0) {
+    //     // menuLeft.innerHTML = menuItems[i].innerHTML
+
+    //   }else {
+    //     console.log(11)
+    //   }
+    // }
+    
   })
 })
 
