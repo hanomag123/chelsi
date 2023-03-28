@@ -1,0 +1,52 @@
+.eventsAndPromotion {
+    margin-top: 14rem;
+
+    @include breakpoint($sm-bp) {
+        margin-top: 5rem;
+
+        .breadCrumbs {
+            display: none;
+        }
+    }
+
+    h2 {
+        font-family: 'Oswald';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 6rem;
+        line-height: 120%;
+        letter-spacing: -0.05em;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        margin-top: 4rem;
+
+        @include breakpoint($sm-bp) {
+            margin-top: 0rem;
+            font-size: 4.2rem;
+            line-height: 120%;
+        }
+    }
+
+    .eventsAndPromotion__content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-top: 8rem;
+
+        @include breakpoint($sm-bp) {
+            margin-top: 3rem;
+        }
+
+        p {
+            font-weight: 500;
+            font-size: 1.8rem;
+            line-height: 2.5rem;
+            color: #FFFFFF;
+
+            @include breakpoint($sm-bp) {
+                font-size: 1.6rem;
+                line-height: 140%;
+            }
+        }
+    }
+}

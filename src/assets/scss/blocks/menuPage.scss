@@ -9,6 +9,7 @@
         line-height: 2.5rem;
         color: #FFFFFF;
         opacity: 0.4;
+
     }
 
 
@@ -17,19 +18,45 @@
 .menuPage {
     padding-top: 14rem;
 
+    @include breakpoint($sm-bp) {
+        padding-top: 5rem;
+
+        .breadCrumbs {
+            display: none;
+        }
+    }
+
     h2 {
         margin-top: 4rem;
         color: #FFFFFF;
+
+        @include breakpoint($sm-bp) {
+            font-size: 4.2rem;
+            line-height: 120%;
+            letter-spacing: -0.05em;
+            margin-top: 0rem;
+        }
     }
 
     .menuPage-menuContent {
         margin-top: 8rem;
+
+        @include breakpoint($sm-bp) {
+            margin-top: 3rem;
+        }
 
         .menuPage-menuContent_listContainer {
             padding-bottom: 2rem;
             display: flex;
             justify-content: space-between;
             border-bottom: 0.2rem solid #FFFFFF;
+
+            @include breakpoint($sm-bp) {
+                justify-content: unset;
+                gap: 2rem;
+                overflow: scroll;
+                padding-bottom: 0rem;
+            }
 
             button {
                 font-family: 'Oswald';
@@ -41,11 +68,21 @@
                 text-transform: uppercase;
                 color: #FFFFFF;
                 opacity: 0.4;
+
+                @include breakpoint($sm-bp) {
+                    font-size: 1.8rem;
+                    line-height: 2.7rem;
+                    width: max-content;
+                }
             }
 
             .menuPage-menuContent_rightBlock {
                 display: flex;
                 gap: 4.2rem;
+
+                @include breakpoint($sm-bp) {
+                    gap: 2rem;
+                }
             }
 
         }
@@ -55,18 +92,28 @@
 
         // display: grid;
         // grid-template-columns: 1fr 1fr;
-        gap: 2rem;
+        gap: 4rem;
         display: flex;
-        
-        .menuPage-menuContent__leftBlock, .menuPage-menuContent__rightBlock {
+        margin-top: 8rem;
+
+        @include breakpoint($sm-bp) {
+            margin-top: 2rem;
+            gap: 2rem;
+        }
+
+        .menuPage-menuContent__leftBlock,
+        .menuPage-menuContent__rightBlock {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
-            width: 50%;
+            gap: 4rem;
+            width: 48.8%;
 
             .helperContainer {
 
-                padding: 8rem;
+                padding-top: 7.7rem;
+                padding-left: 8rem;
+                padding-right: 8rem;
+                padding-bottom: 8rem;
                 background: #162032;
                 border-radius: 1rem;
                 // width: 48.8%;
@@ -77,23 +124,24 @@
                 h2 {
                     padding-bottom: 2rem;
                     border-bottom: 0.2rem solid #FFFFFF;
+                    margin-top: 0rem;
                 }
-    
+
                 ul {
                     margin-top: 6rem;
                     display: flex;
                     flex-direction: column;
                     gap: 4rem;
-    
+
                     li {
                         display: flex;
                         justify-content: space-between;
-    
+
                         .menuPage-menuContent__textContainer {
                             display: flex;
                             flex-direction: column;
                             gap: 0.5rem;
-    
+
                             .menuPage-menuContent__title {
                                 font-family: 'Oswald';
                                 font-style: normal;
@@ -104,7 +152,7 @@
                                 text-transform: uppercase;
                                 color: #FFFFFF;
                             }
-    
+
                             .menuPage-menuContent__subtitle {
                                 font-weight: 500;
                                 font-size: 1.4rem;
@@ -113,7 +161,7 @@
                                 opacity: 0.4;
                             }
                         }
-    
+
                         .menuPage-menuContent__priceContainer {
                             font-family: 'Oswald';
                             font-style: normal;
@@ -124,20 +172,233 @@
                             letter-spacing: -0.05em;
                             text-transform: uppercase;
                             color: #FFFFFF;
+                            width: 22%;
                         }
                     }
                 }
             }
-            
-            
+
+
+
+
+
+
         }
 
 
-        .menuPage-menuContent__menuItem {
-            
+        @include breakpoint($xl-bp) {
+            display: flex;
+            flex-direction: column;
+
+            .menuPage-menuContent__menuItem {
+                background: #162032;
+                border-radius: 1rem;
+                padding: 2rem;
+
+                h2 {
+                    margin-top: 0rem;
+                    padding-bottom: 1rem;
+                    border-bottom: 0.2rem solid #FFFFFF;
+
+                    @include breakpoint($sm-bp) {
+                        font-size: 4.2rem;
+                        line-height: 120%;
+                    }
+                }
+
+                ul {
+                    margin-top: 4rem;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+
+                    li {
+                        display: flex;
+                        justify-content: space-between;
+
+                        .menuPage-menuContent__textContainer {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.5rem;
+
+                            @include breakpoint($sm-bp) {
+                                width: 60%;
+                            }
+
+                            .menuPage-menuContent__title {
+                                font-family: 'Oswald';
+                                font-style: normal;
+                                font-weight: 700;
+                                font-size: 2rem;
+                                line-height: 3rem;
+                                letter-spacing: -0.05em;
+                                text-transform: uppercase;
+                                color: #FFFFFF;
+
+                                @include breakpoint($sm-bp) {
+                                    font-size: 1.8rem;
+                                    line-height: 2.7rem;
+                                }
+                            }
+
+                            .menuPage-menuContent__subtitle {
+                                font-weight: 500;
+                                font-size: 1.4rem;
+                                line-height: 1.9rem;
+                                color: #FFFFFF;
+                                opacity: 0.4;
+
+                                @include breakpoint($sm-bp) {
+                                    font-size: 1.4rem;
+                                    line-height: 1.9rem;
+                                }
+                            }
+                        }
+
+                        .menuPage-menuContent__priceContainer {
+                            font-family: 'Oswald';
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 2rem;
+                            line-height: 3rem;
+                            text-align: right;
+                            letter-spacing: -0.05em;
+                            text-transform: uppercase;
+                            color: #FFFFFF;
+
+                            @include breakpoint($sm-bp) {
+                                font-size: 1.8rem;
+                                line-height: 2.7rem;
+                            }
+                        }
+                    }
+                }
+            }
 
 
-            
+            .menuPage-menuContent__menuItem:nth-child(4) {
+
+                .menuPage-menuContent__subtitle {
+                    font-weight: 500;
+                    font-size: 1.8rem;
+                    line-height: 2.5rem;
+                    color: #FFFFFF;
+                    margin-bottom: 1rem;
+                }
+
+                h2 {
+                    border-bottom: unset;
+                }
+
+                .menuPage-menuContent__paginationContainer {
+                    display: flex;
+                    justify-content: space-between;
+
+                    button {
+                        font-family: 'Oswald';
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 6rem;
+                        line-height: 120%;
+                        letter-spacing: -0.05em;
+                        text-transform: uppercase;
+                        color: #FFFFFF;
+                    }
+                }
+
+
+
+            }
+        }
+    }
+
+    .menuPage-menuContent__rightBlock {
+
+
+        .helperContainer:nth-child(2) {
+            border: 0.2rem dashed #FFFFFF;
+            padding-top: 7.9rem;
+            padding-bottom: 6.3rem;
+
+            .menuPage-menuContent__subtitle {
+                font-weight: 500;
+                font-size: 1.8rem;
+                line-height: 2.5rem;
+                color: #FFFFFF;
+                margin-bottom: 0.9rem;
+            }
+
+            h2 {
+                border-bottom: none;
+                padding-bottom: 0.2rem;
+            }
+
+            .menuPage-menuContent__paginationContainer {
+                display: flex;
+                justify-content: space-between;
+
+                button {
+                    font-family: 'Oswald';
+                    font-style: normal;
+                    font-weight: 700;
+                    font-size: 6rem;
+                    line-height: 120%;
+                    letter-spacing: -0.05em;
+                    text-transform: uppercase;
+                    color: #FFFFFF;
+                }
+
+            }
+        }
+
+        .helperContainer:nth-child(1) {
+            padding-bottom: 7.5rem;
+
+            ul {
+                gap: 3.7rem;
+            }
+        }
+
+        .helperContainer:nth-child(3) {
+            padding-top: 7.8rem;
+            padding-bottom: 7.5rem;
+
+            ul {
+                gap: 4.03rem;
+            }
+        }
+
+        .helperContainer:nth-child(5) {
+            padding-top: 7.8rem;
+            padding-bottom: 7.4rem;
+
+            ul {
+                gap: 5.52rem;
+            }
+        }
+    }
+
+    .menuPage-menuContent__leftBlock {
+
+        .helperContainer:nth-child(3) {
+
+            ul {
+                gap: 3.51rem;
+            }
+        }
+
+        .helperContainer:nth-child(4) {
+
+            ul {
+                gap: 3.84rem;
+            }
+        }
+
+        .helperContainer:nth-child(5) {
+
+            ul {
+                gap: 3.95rem;
+            }
         }
     }
 }

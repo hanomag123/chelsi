@@ -219,166 +219,166 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let swiper4 = null;
 
-if (xl.matches) {
-  swiper4 = new Swiper('.services-swiper', {
-    loop: true,
-    slidesPerView: 'auto',
-    spaceBetween: 0,
-  });
-};
-
-xl.addEventListener('change', () => {
   if (xl.matches) {
     swiper4 = new Swiper('.services-swiper', {
       loop: true,
       slidesPerView: 'auto',
       spaceBetween: 0,
     });
-  } else {
-    swiper4.destroy(true, true);
   };
-});
 
-function modalHandler() {
-  const modal = document.querySelector(`${this.dataset?.modal}`) || this
-  if (modal.classList.contains('regModal') && modal.hidden) {
-    disableScroll();
-  } else {
-    enableScroll();
-  }
-  if (modal) {
-    if (modal.hidden) {
-      modal.hidden = !modal.hidden
-      modal.style.setProperty('pointer-events', 'auto');
-      setTimeout(() => {
-        modal.style.opacity = 1
-      }, 10);
+  xl.addEventListener('change', () => {
+    if (xl.matches) {
+      swiper4 = new Swiper('.services-swiper', {
+        loop: true,
+        slidesPerView: 'auto',
+        spaceBetween: 0,
+      });
     } else {
-      modal.style.opacity = 0
-      modal.style.setProperty('pointer-events', null);
-      const numb = Number(getComputedStyle(modal).transitionDuration.match(/(\d+\.\d+)|(\d+)/g)[0]);
-      if (numb > 0) {
-        modal.addEventListener('transitionend', hideaftertransition);
+      swiper4.destroy(true, true);
+    };
+  });
+
+  function modalHandler() {
+    const modal = document.querySelector(`${this.dataset?.modal}`) || this
+    if (modal.classList.contains('regModal') && modal.hidden) {
+      disableScroll();
+    } else {
+      enableScroll();
+    }
+    if (modal) {
+      if (modal.hidden) {
+        modal.hidden = !modal.hidden
+        modal.style.setProperty('pointer-events', 'auto');
+        setTimeout(() => {
+          modal.style.opacity = 1
+        }, 10);
       } else {
-        modal.hidden = true
+        modal.style.opacity = 0
+        modal.style.setProperty('pointer-events', null);
+        const numb = Number(getComputedStyle(modal).transitionDuration.match(/(\d+\.\d+)|(\d+)/g)[0]);
+        if (numb > 0) {
+          modal.addEventListener('transitionend', hideaftertransition);
+        } else {
+          modal.hidden = true
+        }
       }
     }
   }
-}
 
-function disableScroll() {
-  // Get the current page scroll position
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-  document.documentElement.style.setProperty('scroll-behavior', 'auto');
+  function disableScroll() {
+    // Get the current page scroll position
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    document.documentElement.style.setProperty('scroll-behavior', 'auto');
 
-  // if any scroll is attempted, set this to the previous value
-  window.onscroll = function () {
-    window.scrollTo(scrollLeft, scrollTop);
-  };
-}
+    // if any scroll is attempted, set this to the previous value
+    window.onscroll = function () {
+      window.scrollTo(scrollLeft, scrollTop);
+    };
+  }
 
-function enableScroll() {
-  document.documentElement.style.setProperty('scroll-behavior', null);
-  window.onscroll = function () { };
-}
+  function enableScroll() {
+    document.documentElement.style.setProperty('scroll-behavior', null);
+    window.onscroll = function () { };
+  }
 
 
-const regModal = document.querySelectorAll('.regModal');
+  const regModal = document.querySelectorAll('.regModal');
 
-if (regModal) {
-  regModal.forEach(el => {
-    el.addEventListener('click', function () {
-      if (event.target.classList.contains('regModal')) {
-        modalHandler.apply(this);
+  if (regModal) {
+    regModal.forEach(el => {
+      el.addEventListener('click', function () {
+        if (event.target.classList.contains('regModal')) {
+          modalHandler.apply(this);
+        }
+      });
+      const closeButton = el.querySelector('.close-button');
+      if (closeButton) {
+        closeButton.addEventListener('click', () => {
+          modalHandler.apply(el);
+        });
       }
     });
-    const closeButton = el.querySelector('.close-button');
-    if (closeButton) {
-      closeButton.addEventListener('click', () => {
-        modalHandler.apply(el);
+  }
+
+  const buttonsModal = document.querySelectorAll('[data-modal]');
+
+  function hideaftertransition() {
+    this.hidden = true
+    this.removeEventListener('transitionend', hideaftertransition);
+  }
+
+  if (buttonsModal.length) {
+    buttonsModal.forEach(el => el.addEventListener('click', modalHandler));
+  }
+
+
+  const inputs = document.querySelectorAll('input,textarea')
+  if (inputs.length) {
+    inputs.forEach(el => {
+      el.value ? el.classList.add('havetext') : el.classList.remove('havetext')
+      el.addEventListener('input', function () {
+        this.value ? this.classList.add('havetext') : this.classList.remove('havetext')
+      })
+    })
+  }
+
+  const dates = document.querySelectorAll('.date-container')
+
+  if (dates.length) {
+    dates.forEach(el => {
+      const date1 = el.querySelector('.date-input');
+      const date = new AirDatepicker(date1, {
+        container: 'relative',
+        isMobile: true,
+        onHide: () => {
+          date.$el.classList.add('havetext')
+        },
+        autoClose: true,
       });
+      // new Datepicker(el, {
+      //   toValue: (date) => {
+      //     const arr = date.split(' - ')
+      //     if (arr[0] === '') {
+      //       return
+      //     }
+      //     date1.value = date
+
+      //     arr.forEach((el, i) => {
+      //       if (i === 0) {
+      //         // start.value = el
+      //       }
+      //       if (i === 1) {
+      //         // end.value = el
+      //         if (picker.length) {
+      //           picker.forEach(el => {
+      //             if (el._isOpen) {
+      //               el.hide()
+      //             }
+      //           })
+      //         }
+      //       } else {
+      //         // end.value = ''
+      //       }
+      //     })
+      //   }
+      // });
+    })
+
+
+  }
+
+  const airPick = new AirDatepicker('.only-time', {
+    container: 'relative',
+    isMobile: true,
+    dateFormat: ' ',
+    timepicker: true,
+    classes: 'only-timepicker',
+    onHide: () => {
+      airPick.$el.classList.add('havetext')
     }
   });
-}
-
-const buttonsModal = document.querySelectorAll('[data-modal]');
-
-function hideaftertransition() {
-  this.hidden = true
-  this.removeEventListener('transitionend', hideaftertransition);
-}
-
-if (buttonsModal.length) {
-  buttonsModal.forEach(el => el.addEventListener('click', modalHandler));
-}
-
-
-const inputs = document.querySelectorAll('input,textarea')
-if (inputs.length) {
-  inputs.forEach(el => {
-    el.value ? el.classList.add('havetext') : el.classList.remove('havetext')
-    el.addEventListener('input', function () {
-      this.value ? this.classList.add('havetext') : this.classList.remove('havetext')
-    })
-  })
-}
-
-const dates = document.querySelectorAll('.date-container')
-
-if (dates.length) {
-  dates.forEach(el => {
-    const date1 = el.querySelector('.date-input');
-    const date = new AirDatepicker(date1, {
-      container: 'relative',
-      isMobile: true,
-      onHide: () => {
-        date.$el.classList.add('havetext')
-      },
-      autoClose: true,
-    });
-    // new Datepicker(el, {
-    //   toValue: (date) => {
-    //     const arr = date.split(' - ')
-    //     if (arr[0] === '') {
-    //       return
-    //     }
-    //     date1.value = date
-    
-    //     arr.forEach((el, i) => {
-    //       if (i === 0) {
-    //         // start.value = el
-    //       }
-    //       if (i === 1) {
-    //         // end.value = el
-    //         if (picker.length) {
-    //           picker.forEach(el => {
-    //             if (el._isOpen) {
-    //               el.hide()
-    //             }
-    //           })
-    //         }
-    //       } else {
-    //         // end.value = ''
-    //       }
-    //     })
-    //   }
-    // });
-  })
-
-  
-}
-
-const airPick = new AirDatepicker('.only-time', {
-  container: 'relative',
-  isMobile: true,
-  dateFormat: ' ',
-  timepicker: true,
-  classes: 'only-timepicker',
-  onHide: () => {
-    airPick.$el.classList.add('havetext')
-  }
-});
 
 
 })
@@ -387,47 +387,81 @@ let menuBtns = document.querySelectorAll('.menuPage-menuContent_listContainer bu
 let menuItemsContainer = document.querySelector('.menuPage-menuContent__menuItemsContainer')
 let menuLeft = document.querySelector('.menuPage-menuContent__leftBlock')
 let menuRight = document.querySelector('.menuPage-menuContent__rightBlock')
+let hiddenBlock = document.querySelector('.menuPage-menuContent__hiddenHelpBlock')
 let counter = 0
-let arr1 = []
-let arr2 = []
 
-menuBtns.forEach(e => {
-  e.addEventListener('click', el => {
-    // menuItemsContainer.innerHTML = e.nextElementSibling.innerHTML
-    // console.log(e.nextElementSibling.querySelectorAll('.menuPage-menuContent__menuItem'))
-    let menuItems = e.nextElementSibling.querySelectorAll('.menuPage-menuContent__menuItem')
-    // console.log(menuItems.length)
-    counter = 0
-    menuItems.forEach((e, id) => {
-      if (id % 2 == 0 && counter < menuItems.length - 1) {
-        
-        let a = document.createElement('div')
-        a.classList.add('helperContainer')
-        a.innerHTML = e.innerHTML
-        menuLeft.appendChild(a)
-        counter + 1
-      }else if (id % 2 != 0 && counter < menuItems.length - 1) {
-        let a = document.createElement('div')
-        a.classList.add('helperContainer')
-        a.innerHTML = e.innerHTML
-        menuRight.appendChild(a)
-        counter + 1
-      }
+if (window.matchMedia("(min-width: 1024px)").matches) {
+  menuBtns.forEach(e => {
+    e.addEventListener('click', el => {
+      let menuItems = e.nextElementSibling.querySelectorAll('.menuPage-menuContent__menuItem')
+      menuBtns.forEach(el => {
+        el.classList.remove('activeBreadCrumbs')
+      })
+      e.classList.add('activeBreadCrumbs')
+      counter = 0
+      menuLeft.innerHTML = ''
+      menuRight.innerHTML = ''
+  
+      menuItems.forEach((e, id) => {
+  
+        if (id % 2 == 0 && counter < menuItems.length - 1) {
+          let a = document.createElement('div')
+          a.classList.add('helperContainer')
+          a.innerHTML = e.innerHTML
+          menuLeft.appendChild(a)
+          counter + 1
+        } else if (id % 2 != 0 && counter < menuItems.length - 1) {
+          let a = document.createElement('div')
+          a.classList.add('helperContainer')
+          a.innerHTML = e.innerHTML
+          menuRight.appendChild(a)
+          counter + 1
+        }
+  
+      })
+
+      let menuContentSwiper = new Swiper(".menuPage-menuContent__swiper", {
+        grabCursor: true,
+        loop: true,
+        navigation: {
+          nextEl: ".menuPage-menuContent__next",
+          prevEl: ".menuPage-menuContent__prev",
+        },
+      });
+  
     })
-
-    console.log(arr2)
-
-    // for (let i = 0; i < menuItems.length; i++) {
-    //   if(i < menuItems.length && i % 2 == 0) {
-    //     // menuLeft.innerHTML = menuItems[i].innerHTML
-
-    //   }else {
-    //     console.log(11)
-    //   }
-    // }
-    
+  
+  
   })
-})
+}
+
+if (window.matchMedia("(max-width: 1024px)").matches) {
+  menuBtns.forEach(e => {
+    e.addEventListener('click', el => {
+
+      menuBtns.forEach(el => {
+        el.classList.remove('activeBreadCrumbs')
+      })
+      e.classList.add('activeBreadCrumbs')
+      
+      menuItemsContainer.innerHTML = e.nextElementSibling.innerHTML
+
+
+      let menuContentSwiper = new Swiper(".menuPage-menuContent__swiper", {
+        grabCursor: true,
+        loop: true,
+        navigation: {
+          nextEl: ".menuPage-menuContent__next",
+          prevEl: ".menuPage-menuContent__prev",
+        },
+      });
+    })
+  
+  
+  })
+}
+
+
 
 menuBtns[0].click()
 
