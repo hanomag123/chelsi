@@ -73,6 +73,25 @@
   }
 }
 
+.custom-undrl2 {
+  padding-bottom: 2.2rem;
+  height: min-content;
+  position: relative;
+  @include breakpoint($xl-bp) {
+    padding-bottom: 2rem;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 8rem;
+    height: 0.2rem;
+    background-color: var(--white);
+    border-radius: 0.2rem;
+  }
+}
+
 .custom-text {
   p + p {
     margin-top: 2rem;
