@@ -21,6 +21,9 @@ module.exports = {
       max3: "repeat(3, max-content)",
       custom: "repeat(auto-fit,minmax(100px,1fr))"
     },
+    minWidth: {
+      '200': '20rem',
+    },
     maxWidth: {
       "400": "40rem",
       "640": "64rem"

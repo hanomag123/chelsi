@@ -233,6 +233,21 @@
       margin-right: 2.5rem;
     }
   }
+  &.--gallery {
+    .swiper-slide {
+      height: 44rem;
+      @include breakpoint($xl-bp) {
+        margin-right: 2rem;
+      }
+      @include breakpoint($sm-bp) {
+        height: 28.3rem;
+        margin-right: 1rem;
+      }
+    }
+    .--wider {
+      grid-column: 2 span;
+    }
+  }
 }
 
 .custom-border-desc {
