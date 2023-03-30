@@ -14,7 +14,7 @@
   
   <h1 class="h2 text-white">Работа у нас</h1>
 
-  <ul class="mt-80 sm:mt-20 grid grid-cols-2 sm:grid-cols-1 gap-40 xl:gap-20">
+  <ul class="mt-80 xl:mt-50 sm:mt-30 grid grid-cols-2 sm:grid-cols-1 gap-40 xl:gap-20">
     <li class="p-40 sm:p-20 bg-dblue rounded-10 space-y-40 sm:space-y-20">
       <div class="flex xl:flex-col justify-between items-center xl:gap-20 xl:items-start pb-21 xl:pb-0 custom-border-desc">
         <h2 class="h3 xl:h4-mob text-white custom-border-mobile xl:pb-10 xl:w-full">Бармен</h2>
@@ -28,7 +28,7 @@
         Описание вакансии Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor. Voluptate exercitation incididunt aliquip deserunt reprehenderit elit laborum...
       </div>
 
-      <button class="page-button">Откликнуться</button>
+      <button data-modal="#vacmodal" data-vacname="Бармен" class="page-button">Откликнуться</button>
     </li>
 
     <li class="p-40 sm:p-20 bg-dblue rounded-10 space-y-40 sm:space-y-20">
@@ -44,8 +44,12 @@
         Описание вакансии Aliqua id fugiat nostrud irure ex duis ea quis id quis ad et. Sunt qui esse pariatur duis deserunt mollit dolore cillum minim tempor enim. Elit aute irure tempor cupidatat incididunt sint deserunt ut voluptate aute id deserunt nisi...
       </div>
 
-      <button class="page-button">Откликнуться</button>
+      <button data-modal="#vacmodal" data-vacname="Администратор" class="page-button">Откликнуться</button>
     </li>
   </ul>
 
 </section>
+
+<!-- Vacancies modal -->
+
+{{> vacancies-modal}}
