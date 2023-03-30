@@ -452,7 +452,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 })
 
-let menuBtns = document.querySelectorAll('.menuPage-menuContent_listContainer button')
+let menuBtns = document.querySelectorAll('.filter-btn')
 let menuItemsContainer = document.querySelector('.menuPage-menuContent__menuItemsContainer')
 let menuLeft = document.querySelector('.menuPage-menuContent__leftBlock')
 let menuRight = document.querySelector('.menuPage-menuContent__rightBlock')
@@ -462,10 +462,13 @@ let counter = 0
 
 if (window.matchMedia("(min-width: 1024px)").matches) {
   menuBtns.forEach(e => {
-    e.addEventListener('click', el => {
-
-      menuPageLeftBlock.innerHTML = e.innerHTML
-      let menuItems = e.nextElementSibling.querySelectorAll('.menuPage-menuContent__menuItem')
+    e.addEventListener('click', function () {
+      menuBtns.forEach(menuBtn => {
+        menuBtn.classList.remove('active')
+      })
+      this.classList.add('active')
+      menuPageLeftBlock.innerHTML = this.innerHTML
+      let menuItems = this.nextElementSibling.querySelectorAll('.menuPage-menuContent__menuItem');
       counter = 0
       menuLeft.innerHTML = ''
       menuRight.innerHTML = ''
