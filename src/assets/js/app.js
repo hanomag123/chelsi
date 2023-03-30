@@ -433,16 +433,15 @@ let menuItemsContainer = document.querySelector('.menuPage-menuContent__menuItem
 let menuLeft = document.querySelector('.menuPage-menuContent__leftBlock')
 let menuRight = document.querySelector('.menuPage-menuContent__rightBlock')
 let hiddenBlock = document.querySelector('.menuPage-menuContent__hiddenHelpBlock')
+let menuPageLeftBlock = document.querySelector('.menuPage-menuContent_leftBlock')
 let counter = 0
 
 if (window.matchMedia("(min-width: 1024px)").matches) {
   menuBtns.forEach(e => {
     e.addEventListener('click', el => {
+
+      menuPageLeftBlock.innerHTML = e.innerHTML
       let menuItems = e.nextElementSibling.querySelectorAll('.menuPage-menuContent__menuItem')
-      menuBtns.forEach(el => {
-        el.classList.remove('activeBreadCrumbs')
-      })
-      e.classList.add('activeBreadCrumbs')
       counter = 0
       menuLeft.innerHTML = ''
       menuRight.innerHTML = ''
