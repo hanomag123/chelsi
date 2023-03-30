@@ -247,7 +247,16 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function modalHandler() {
-    const modal = document.querySelector(`${this.dataset?.modal}`) || this
+    const modal = document.querySelector(`${this.dataset?.modal}`) || this;
+    const isVacation = this.dataset.vacname;
+    if (isVacation && modal) {
+      const vacText = modal.querySelector('.vacnameText');
+      const vacInput = modal.querySelector('.vacnameInput');
+      if (vacText && vacInput) {
+        vacText.innerHTML = isVacation;
+        vacInput.value = isVacation;
+      }
+    }
     if (modal.classList.contains('regModal') && modal.hidden) {
       disableScroll();
     } else {
@@ -423,6 +432,21 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       })
     }
+  }
+
+  const fileinput = document.querySelectorAll('.file-input');
+
+  if (fileinput.length) {
+    fileinput.forEach(el => {
+      const inputText = el.parentElement.querySelector('.file-text')
+      el.addEventListener('change', function () {
+        if (this.value) {
+          if (inputText) {
+            inputText.innerHTML = this.value.replace('C:\\fakepath\\', '')
+          }
+        }
+      })
+    })
   }
 
 

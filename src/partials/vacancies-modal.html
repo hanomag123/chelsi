@@ -1,0 +1,58 @@
+<div class="regModal bg-[rgba(0,0,0,0.6)] fixed top-0 left-0 w-full h-full z-[1000] flex items-center justify-center py-20 opacity-0"
+  id="vacmodal" hidden>
+
+  <div class="p-80 xl:p-35 relative rounded-10 bg-dblue w-max max-h-[80rem] xl:max-h-full overflow-auto">
+    <button class="close-button absolute top-40 xl:top-15 right-40 xl:right-15">
+      <svg class="w-24 h-24">
+        <use href='#crossIcon'></use>
+      </svg>
+    </button>
+
+    <form action="#" class="flex flex-col gap-40 xl:gap-20 max-w-640">
+      <div class="pb-20 sm:pb-10 custom-border-full">
+        <h2 class="page-h2 xl:h3-mob text-white">Отклик на вакансию «<span class="vacnameText uppercase"></span>»</h2>
+      </div>
+      <input type="hidden" class="vacnameInput" name="vacname">
+
+      <div class="grid grid-cols-2 sm:grid-cols-1 gap-20">
+        <div class="input-container relative w-full">
+          <input type="text" name="name" class="custom-input w-full" required>
+          <div class="input-placeholder">Имя</div>
+        </div>
+
+        <div class="input-container relative w-full">
+          <input type="text" name="lastname" class="custom-input w-full" required>
+          <div class="input-placeholder">Фамилия</div>
+        </div>
+  
+        <div class="input-container relative w-full">
+          <input type="tel" name="tel" class="custom-input w-full" required>
+          <div class="input-placeholder">Телефон</div>
+        </div>
+  
+        <div class="input-container relative w-full">
+          <input type="email" name="mail" class="custom-input w-full" required>
+          <div class="input-placeholder">E-mail</div>
+        </div>
+
+        <div class="input-container relative w-full col-span-2 sm:col-span-1">
+          <textarea name="wishes" class="custom-textarea w-full"></textarea>
+          <div class="input-placeholder">Сопроводительное письмо</div>
+        </div>
+      </div>
+
+      <div class="space-y-40 sm:space-y-20">
+        <label class="text-white flex gap-10 cursor-pointer">
+          <input type="file" class="file-input" name="file" hidden>
+          <svg class="w-24 h-24"><use href='#fileIcon'></use></svg>
+          <span class="file-text">Прикрепить резюме</span>
+        </label>
+        <div class="flex gap-20 sm:flex-col">
+          <button type="submit" class="page-button">Откликнуться</button>
+          <div class="opacity-40 text-white brnone xl:brblock">Нажимая кнопку, вы соглашаетесь<br> с политикой обработки <a href="#" class="underline">персональных данных</a></div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
