@@ -79,10 +79,32 @@
             .menuPage-menuContent_rightBlock {
                 display: flex;
                 gap: 4.2rem;
+                
+                div {
+                    animation: fadeEffect 1s ease-in-out;
+                }
 
                 @include breakpoint($sm-bp) {
                     gap: 2rem;
                 }
+            }
+
+            .menuPage-menuContent_leftBlock {
+                font-family: 'Oswald';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 2rem;
+                line-height: 3rem;
+                letter-spacing: -0.05em;
+                text-transform: uppercase;
+                color: #FFFFFF;
+                animation: fadeEffect 1s ease-in-out;
+
+                @include breakpoint($xl-bp) {
+                    display: none;
+                }
+
+                
             }
 
         }
