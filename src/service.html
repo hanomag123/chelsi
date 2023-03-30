@@ -15,19 +15,19 @@
 </div>
 
 <section class="mt-40 xl:mt-50 container">
-  <h1 class="h2 text-white">Сигарный клуб в Москве</h1>
+  <h1 class="h2 text-white brnone xl:brblock">Сигарный клуб <br>в Москве</h1>
 
   <ul class="grid grid-cols-3 xl:grid-cols-2 sm:grid-cols-1 gap-40 xl:gap-20 mt-80 xl:mt-30">
     <li>
-      <div class="img-cover rounded-10 overflow-hidden xl:mt-10 h-full w-full">
+      <div class="img-cover rounded-10 overflow-hidden h-full w-full xl:h-[60rem]">
         <img src="./assets/images/main/main-2.jpg" alt="about">
       </div>
     </li>
-    <li>
-      <div class="img-cover rounded-10 overflow-hidden h-[34rem] w-full">
+    <li class="flex flex-col">
+      <div class="img-cover rounded-10 overflow-hidden h-[34rem] sm:h-[22rem] w-full xl:mt-20">
         <img src="./assets/images/main/main-3.jpg" alt="about">
       </div>
-      <div class="text-white custom-text mt-40">
+      <div class="text-white custom-text mt-40 xl:mt-0 xl:-order-1">
         <p>В нашем сигарном клубе вы можете арендовать зал для проведения мероприятия, деловой встречи, частной
           вечеринки и дегустации сигар в кругу единомышленников на любое время. Мы предлагаем соответствующую атмосферу,
           профессиональное обслуживание, вкусное меню и отличное времяпрепровождение.</p>
@@ -36,7 +36,7 @@
         <p>Уютный интерьер в английском стиле, авторское меню, обширная барная карта и вышколенный персонал, – все это
           поможет сделать ваше торжество по-настоящему незабываемым.</p>
       </div>
-      <div class="text-white custom-text h3 xl:h4-mob custom-undrl mt-80">
+      <div class="text-white custom-text h3 xl:h4-mob custom-undrl mt-80 xl:mt-40 sm:mt-20">
         Уютное место для настоящих ценителей сигар в Москве и отдыха в компании единомышленников
         Планируете организацию мероприятия, встречу с друзьями или партнерами?
         <br><br>
@@ -44,11 +44,11 @@
       </div>
     </li>
     <li>
-      <div class="flex flex-col-reverse justify-between h-full">
-        <div class="img-cover rounded-10 overflow-hidden h-[43.5rem] w-full">
+      <div class="flex gap-20 flex-col-reverse xl:flex-col justify-between h-full">
+        <div class="img-cover rounded-10 overflow-hidden h-[43.5rem] sm:h-[28rem] w-full">
           <img src="./assets/images/service/service-1.jpg" alt="about">
         </div>
-        <div class="text-white custom-text">
+        <div class="text-white custom-text font-medium">
           <p>В нашем сигарном клубе Мы создаем атмосферу спокойствия, удобства и комфорта. В клубе представлено
             идеальное сочетание британского стиля, интернациональной кухни. Здесь можно отобедать, как английская
             королева, и отдохнуть, как в лучших лондонских пабах. В нашем баре вам предложат в сопровождение к сигарам
@@ -70,7 +70,7 @@
   <ul class="grid grid-cols-2 sm:grid-cols-1 gap-40 xl:gap-20 mt-80 xl:mt-40 sm:mt-20">
 
     <li class="bg-dblue rounded-10 p-40 xl:p-20 space-y-20 sm:space-y-15">
-      <div class="img-cover overflow-hidden rounded-10 block w-full h-[50rem] xl:h-[34rem]">
+      <div class="img-cover overflow-hidden rounded-10 block w-full h-[44rem] xl:h-[34rem] sm:h-[22.5rem]">
         <img src="./assets/images/service/service-2.jpg" alt="service">
       </div>
       <h2 class="h2 text-white">Большой банкетный зал</h2>
@@ -78,7 +78,7 @@
     </li>
 
     <li class="bg-dblue rounded-10 p-40 xl:p-20 space-y-20 sm:space-y-15">
-      <div class="img-cover overflow-hidden rounded-10 block w-full h-[50rem] xl:h-[34rem]">
+      <div class="img-cover overflow-hidden rounded-10 block w-full h-[44rem] xl:h-[34rem] sm:h-[22.5rem]">
         <img src="./assets/images/service/service-3.jpg" alt="service">
       </div>
       <h2 class="h2 text-white">Малый банкетный зал</h2>
@@ -89,12 +89,14 @@
 </section>
 
 <section class="mt-200 xl:mt-100">
-  <div class="flex justify-between items-center pb-21 xl:pb-12 full-border container">
-    <h2 class="h3 xl:h4-mob text-white">Фотогалерея</h2>
+  <div class="container">
+    <div class="flex justify-between items-center pb-21 xl:pb-12 full-border">
+      <h2 class="h3 xl:h4-mob text-white">Фотогалерея</h2>
+    </div>
   </div>
 
-  <div class="container sm:!pr-0">
-    <div class="swiper services-swiper mt-80 xl:mt-30">
+  <div class="container !pr-0">
+    <div class="swiper services-swiper --gallery container !pl-0 mt-80 xl:mt-30 sm:mt-20">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <a data-fancybox="gallery" href="./assets/images/gallery/gallery-1.jpg"
@@ -176,5 +178,266 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<section class="mt-200 xl:mt-100 relative container">
+  <div class="grid grid-cols-2 xl:grid-cols-1 gap-40 xl:gap-50">
+
+    <div class="pt-80 xl:pt-0 flex flex-col gap-40 xl:gap-20">
+
+      <div>
+        <div class="flex justify-between gap-20 sm:gap-5 h3 xl:h4-mob text-white pb-20 sm:pb-10 custom-border-full">
+          <div class="justify-self-start">Дополнительное оборудование</div>
+        </div>
+      </div>
+
+      <ul class="space-y-20 sm:space-y-15">
+        <li class="flex items-center gap-40 xl:gap-20">
+          <div class="img-contain w-80 h-80 ">
+            <img src="./assets/images/service/svg/svg-1.svg" alt="svg">
+          </div>
+
+          <div class="text-white">
+            Диджейский пульт для музыки
+          </div>
+        </li>
+
+        <li class="flex items-center gap-40 xl:gap-20">
+          <div class="img-contain w-80 h-80 ">
+            <img src="./assets/images/service/svg/svg-2.svg" alt="svg">
+          </div>
+
+          <div class="text-white">
+            Проектор для презентаций
+          </div>
+        </li>
+
+        <li class="flex items-center gap-40 xl:gap-20">
+          <div class="img-contain w-80 h-80 ">
+            <img src="./assets/images/service/svg/svg-3.svg" alt="svg">
+          </div>
+
+          <div class="text-white">
+            Микрофон
+          </div>
+        </li>
+
+        <li class="flex items-center gap-40 xl:gap-20">
+          <div class="img-contain w-80 h-80 ">
+            <img src="./assets/images/service/svg/svg-4.svg" alt="svg">
+          </div>
+
+          <div class="text-white">
+            Музыкальные колонки
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="p-80 xl:p-35 sm:p-20 relative rounded-10 bg-dblue overflow-auto">
+  
+      <form action="#" class="flex flex-col gap-40 xl:gap-20 max-w-640">
+        <div class="pb-20 sm:pb-10 custom-border-full">
+          <h2 class="h3 xl:h4-mob text-white brnone sm:brblock">Организация мероприятий <br>в сигарном клубе</h2>
+        </div>
+
+        <div class="text-white">
+          Мы можем организовать мероприятие «под ключ» индивидуально под каждого клиента: разработать специальное банкетное меню нашего ресторана, украсить зал и организовать музыкальное сопровождение. Но вы также можете пригласить своих декораторов и других музыкантов. Условия проведения мероприятий для сигарного клуба обговариваются индивидуально. Просто позвоните нам, и администраторы ответят на все ваши вопросы.
+        </div>
+  
+        <div class="grid grid-cols-2 sm:grid-cols-1 gap-20">
+          <div class="input-container relative w-full">
+            <input type="text" name="name" class="custom-input w-full" required>
+            <div class="input-placeholder">Имя</div>
+          </div>
+    
+          <div class="input-container relative w-full">
+            <input type="tel" name="tel" class="custom-input w-full" required>
+            <div class="input-placeholder">Телефон</div>
+          </div>
+
+        </div>
+  
+        <div class="flex gap-20 sm:gap-10 sm:flex-col">
+          <button type="submit" class="page-button">Забронировать</button>
+          <div class="opacity-40 text-white brnone xl:brblock sm:text-14 sm:leading-19">Нажимая кнопку, вы соглашаетесь<br> с политикой обработки <a href="#">персональных данных</a></div>
+        </div>
+  
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<section class="mt-200 xl:mt-100">
+  <div class="container">
+    <div class="flex justify-between items-center pb-21 xl:pb-12 full-border">
+      <h2 class="h3 xl:h4-mob text-white">Услуги</h2>
+      <a href="#" class="h3 xl:h4-mob text-white plus">Все услуги</a>
+    </div>
+  </div>
+
+  <div class="swiper services-swiper container">
+    <ul class="swiper-wrapper mt-200 xl:mt-150">
+      <li class="swiper-slide bg-dblue rounded-10 min-h-[46rem] xl:min-h-[38rem] hoverplus">
+        <a href="#" class="p-40 xl:p-20 flex flex-col justify-between h-full xl:min-h-[38rem]">
+          <span class="-mt-160 xl:-mt-140">
+            <span class="img-cover rounded-10 overflow-hidden block h-[24rem]">
+              <img src="./assets/images/services-block/services-block-1.jpg" alt="services-img">
+            </span>
+    
+            <span class="h2 text-white mt-40 block">Дни <br>рождения</span>
+          </span>
+  
+          <span class="grid grid-cols-[32.1rem_4rem] xl:grid-cols-[19rem_4rem] justify-between items-end">
+            <span class="text-white brnone xl:brblock">Забронируйте<br> паб для компании</span>
+            <span class="custom-plus"></span>
+          </span>
+        </a>
+      </li>
+      <li class="swiper-slide bg-dblue rounded-10 min-h-[46rem] xl:min-h-[38rem] hoverplus">
+        <a href="#" class="p-40 xl:p-20 flex flex-col justify-between h-full xl:min-h-[38rem]">
+          <span class="-mt-160 xl:-mt-140">
+            <span class="img-cover rounded-10 overflow-hidden block h-[24rem]">
+              <img src="./assets/images/services-block/services-block-2.jpg" alt="services-img">
+            </span>
+    
+            <span class="h2 text-white mt-40 block">Паб для девичника</span>
+          </span>
+  
+          <span class="grid grid-cols-[32.1rem_4rem] xl:grid-cols-[19rem_4rem] justify-between items-end">
+            <span class="text-white brnone xl:brblock">Забронируйте<br> паб для девичника</span>
+            <span class="custom-plus"></span>
+          </span>
+        </a>
+      </li>
+      <li class="swiper-slide bg-dblue rounded-10 min-h-[46rem] xl:min-h-[38rem] hoverplus">
+        <a href="#" class="p-40 xl:p-20 flex flex-col justify-between h-full xl:min-h-[38rem]">
+          <span class="-mt-160 xl:-mt-140">
+            <span class="img-cover rounded-10 overflow-hidden block h-[24rem]">
+              <img src="./assets/images/services-block/services-block-3.jpg" alt="services-img">
+            </span>
+    
+            <span class="h2 text-white mt-40 block">Паб для мальчишника</span>
+          </span>
+  
+          <span class="grid grid-cols-[32.1rem_4rem] xl:grid-cols-[19rem_4rem] justify-between items-end">
+            <span class="text-white brnone xl:brblock">Забронируйте<br> паб для мальчишника</span>
+            <span class="custom-plus"></span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+</section>
+
+<section class="mt-200 xl:mt-100 container">
+  <ul class="grid grid-cols-3 xl:grid-cols-1 gap-40 xl:gap-20">
+    <li class="bg-dblue min-h-[54rem] xl:min-h-[20rem] hoverplus rounded-10">
+      <a href="#" class="p-40 xl:p-20 flex flex-col justify-between h-full">
+        <span class="h2 xl:h3-mob text-white block custom-undrl">Авторская кухня</span>
+        <span class="grid grid-cols-[32.1rem_4rem] xl:grid-cols-[24.7rem_4rem] justify-between mt-10">
+          <span class="text-white">Несколько слов о кухне, какие блюда подаются и так далее Amet minim
+            mollit non deserunt ullamco est sit aliqua dolor do amet sint.</span>
+          <span class="custom-plus self-end"></span>
+        </span>
+      </a>
+    </li>
+    <li class="bg-dblue min-h-[54rem] xl:min-h-[20rem] hoverplus rounded-10">
+      <a href="#" class="p-40 xl:p-20 flex flex-col justify-between h-full">
+        <span class="h2 xl:h3-mob text-white block custom-undrl">Более 100 сортов виски</span>
+        <span class="grid grid-cols-[32.1rem_4rem] xl:grid-cols-[24.7rem_4rem] justify-between mt-10">
+          <span class="text-white">Несколько слов о виски Velit officia consequat duis enim velit
+            mollit.</span>
+          <span class="custom-plus self-end"></span>
+        </span>
+      </a>
+    </li>
+    <li class="bg-dblue min-h-[54rem] xl:min-h-[20rem] hoverplus rounded-10">
+      <a href="#" class="p-40 xl:p-20 flex flex-col justify-between h-full">
+        <span class="h2 xl:h3-mob text-white block custom-undrl">Более 15 сортов пива</span>
+        <span class="grid grid-cols-[32.1rem_4rem] xl:grid-cols-[24.7rem_4rem] justify-between mt-10">
+          <span class="text-white">Несколько слов о пиве Amet minim mollit non deserunt ullamco est sit
+            aliqua dolor do amet sint. Exercitation veniam consequat sunt nostrud amet.</span>
+          <span class="custom-plus self-end"></span>
+        </span>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<section class="mt-200 xl:mt-100 container xl:!px-0">
+  <div class="p-140 xl:px-20 xl:py-50 bg-dblue rounded-10 xl:rounded-none">
+    <div class="flex justify-between items-center pb-21 xl:pb-12 full-border">
+      <h2 class="h3 xl:h4-mob text-white">Наши хиты</h2>
+      <a href="#" class="h3 xl:h4-mob text-white plus">Полное Меню</a>
+    </div>
+
+    <div class="hit relative mt-80 xl:mt-30">
+      <div class="swiper hit-swiper hit-two-column">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <a data-fancybox href="./assets/images/hits/hits-1.jpg" class="img-cover rounded-10 overflow-hidden xl:w-[26rem] h-[55rem] xl:h-[27.5rem]">
+              <img src="./assets/images/hits/hits-1.jpg" alt="hits">
+            </a>
+            <div class="text-white flex flex-col justify-between">
+              <div class="space-y-31 xl:space-y-10 xl:flex xl:flex-col xl:items-center">
+                <h3 class="h2">Tower set</h3>
+                <div class="opacity-40 xl:text-18 xl:leading-25">0,8-0,9 кг</div>
+                <div class="xl:text-center">Состав: Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
+                  Voluptate
+                  exercitation incididunt aliquip deserunt reprehenderit elit laborum.</div>
+              </div>
+              <div class="mt-20">
+                <div class="flex gap-20 items-baseline xl:justify-between">
+                  <div class="h3 xl:text-20 xl:leading-30">2100 ₽</div>
+                  <div class="opacity-40 xl:text-18 xl:leading-25">/ порция</div>
+                  <div class="opacity-40 xl:text-18 xl:leading-25">/ 2 персоны</div>
+                </div>
+                <button class="page-button mt-40 xl:mt-20">Предзаказ</button>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <a data-fancybox href="./assets/images/hits/hits-1.jpg" class="img-cover rounded-10 overflow-hidden xl:w-[26rem] h-[55rem] xl:h-[27.5rem]">
+              <img src="./assets/images/hits/hits-1.jpg" alt="hits">
+            </a>
+            <div class="text-white flex flex-col justify-between">
+              <div class="space-y-31 xl:space-y-10 xl:flex xl:flex-col xl:items-center">
+                <h3 class="h2">Tower set</h3>
+                <div class="opacity-40 xl:text-18 xl:leading-25">0,8-0,9 кг</div>
+                <div class="xl:text-center">Состав: Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
+                  Voluptate
+                  exercitation incididunt aliquip deserunt reprehenderit elit laborum.</div>
+              </div>
+              <div class="mt-20">
+                <div class="flex gap-20 items-baseline xl:justify-between">
+                  <div class="h3 xl:text-20 xl:leading-30">2100 ₽</div>
+                  <div class="opacity-40 xl:text-18 xl:leading-25">/ порция</div>
+                  <div class="opacity-40 xl:text-18 xl:leading-25">/ 2 персоны</div>
+                </div>
+                <button class="page-button mt-40 xl:mt-20">Предзаказ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="absolute top-50% xl:top-137 -translate-y-50% -right-100 xl:right-0 z-10 next">
+        <svg class="fill-white w-19 h-34">
+          <use href='#arrowr'></use>
+        </svg>
+      </div>
+      <div class="absolute top-50% xl:top-137 -translate-y-50% -left-100 xl:left-0 z-10 prev">
+        <svg class="fill-white w-19 h-34">
+          <use href='#arrowl'></use>
+        </svg>
+      </div>
+
+    </div>
+
   </div>
 </section>

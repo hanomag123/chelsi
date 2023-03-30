@@ -1,0 +1,62 @@
+.magazine-block-border {
+
+}
+
+.magazine-block {
+  display: grid;
+  grid-template-columns: 1fr max-content;
+  position: relative;
+  width: 100%;
+  overflow: auto;
+  gap: 2rem;
+  &::-webkit-scrollbar:horizontal {
+    height: 0;
+  }
+}
+.fadeeffect {
+  animation: fadeEffect 1s ease-in-out;
+}
+.magazine-main {
+  span {
+    white-space: nowrap;
+    animation: fadeEffect 1s ease-in-out;
+  }
+  @include breakpoint($sm-bp) {
+    display: none;
+  }
+}
+
+.magazine-buttons {
+  display: flex;
+  button {
+    border: 0;
+    transition: max-width .3s;
+    max-width: 20rem;
+    white-space: nowrap;
+    overflow: hidden;
+    span {
+      padding-left: 4rem;
+      @include breakpoint($sm-bp) {
+        padding-left: 2rem;
+      }
+    }
+    &:focus {
+      outline: none;
+    }
+    @apply h3 xl:h4-mob text-white opacity-40;
+    &.active {
+      max-width: 0;
+      @include breakpoint($sm-bp) {
+        max-width: none;
+        opacity: 1;
+      }
+    }
+  }
+  li {
+    &:first-child {
+      span {
+        padding-left: 0;
+      }
+    }
+  }
+}

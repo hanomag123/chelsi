@@ -217,27 +217,34 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
-  let swiper4 = null;
-
-  if (xl.matches) {
-    swiper4 = new Swiper('.services-swiper', {
-      loop: true,
-      slidesPerView: 'auto',
-      spaceBetween: 0,
-    });
-  };
-
-  xl.addEventListener('change', () => {
+  const mobileSwipers = document.querySelectorAll('.services-swiper')
+  if (mobileSwipers.length) {
     if (xl.matches) {
-      swiper4 = new Swiper('.services-swiper', {
-        loop: true,
-        slidesPerView: 'auto',
-        spaceBetween: 0,
-      });
-    } else {
-      swiper4.destroy(true, true);
-    };
-  });
+      mobileSwipers.forEach(el => {
+        let swiper4 = null;
+        swiper4 = new Swiper(el, {
+          loop: true,
+          slidesPerView: 'auto',
+          spaceBetween: 0,
+        });
+
+        xl.addEventListener('change', () => {
+          if (xl.matches) {
+            swiper4 = new Swiper(el, {
+              loop: true,
+              slidesPerView: 'auto',
+              spaceBetween: 0,
+            });
+          } else {
+            if (swiper4) {
+              console.log(swiper4)
+              swiper4.destroy(true, true);
+            }
+          };
+        });
+      })
+    }
+  }
 
   function modalHandler() {
     const modal = document.querySelector(`${this.dataset?.modal}`) || this
@@ -379,6 +386,44 @@ document.addEventListener("DOMContentLoaded", () => {
       airPick.$el.classList.add('havetext')
     }
   });
+
+  const magazineButtons = document.querySelectorAll('.magazine-buttons button');
+  const magazineMain = document.querySelector('.magazine-main');
+
+  if (magazineButtons.length && magazineMain) {
+    magazineButtons.forEach(button => {
+      button.addEventListener('click', function () {
+        magazineButtons.forEach(el => {
+          el.classList.remove('active');
+        })
+        this.classList.add('active');
+        magazineMain.innerHTML = this.innerHTML;
+        filterItems(this.dataset.filterbutton)
+      })
+
+      if (button.classList.contains('active')) {
+        magazineMain.innerHTML = button.innerHTML
+      }
+    })
+  }
+
+  function filterItems(filterName) {
+    const items = document.querySelectorAll('[data-filtername]');
+    if (!items.length) {
+      return
+    }
+    if (filterName === 'all') {
+      items.forEach(el => el.hidden = false);
+    } else {
+      items.forEach(el => {
+        if (el.dataset.filtername === filterName) {
+          el.hidden = false;
+        } else {
+          el.hidden = true;
+        }
+      })
+    }
+  }
 
 
 })
