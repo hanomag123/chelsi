@@ -110,16 +110,16 @@ function css(cb) {
       })
     )
     .pipe(cssbeautify())
-    .pipe(dest(path.build.css))
-    .pipe(
-      cssnano({
-        zindex: false,
-        discardComments: {
-          removeAll: true,
-        },
-      })
-    )
+    // .pipe(
+    //   cssnano({
+    //     zindex: false,
+    //     discardComments: {
+    //       removeAll: true,
+    //     },
+    //   })
+    // )
     .pipe(removeComments())
+    .pipe(dest(path.build.css))
     .pipe(
       rename({
         suffix: ".min",
@@ -193,6 +193,13 @@ function cssWatch(cb) {
       })
     )
     .pipe(postcss([tailwindcss("./tailwind.config.js")]))
+    .pipe(cssbeautify())
+    .pipe(removeComments())
+    .pipe(
+      autoprefixer({
+        cascade: true,
+      })
+    )
     .pipe(
       rename({
         suffix: ".min",
