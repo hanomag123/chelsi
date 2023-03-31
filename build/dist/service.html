@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="">
+    <title></title>
+    
+    <link rel="stylesheet" href="assets/css/vendor/fancybox.min.css">
+    <link rel="stylesheet" href="assets/css/style.min.css">
+    <!-- CSS only -->
+    
+    
+</head>
+
+<body>
+    <svg style="display: none;">
+    
+        <symbol id="arrowr" viewBox="0 0 7 12">
+            <g>
+                <path d="M0.095625 12V9.18L3.97563 6.38L0.095625 3.62V0.799999L6.29563 5.14V7.66L0.095625 12Z"/>
+            </g>
+        </symbol>
+        <symbol id="arrowl" viewBox="0 0 7 12">
+            <g>
+                <path d="M6.83563 12L0.635625 7.66V5.14L6.83563 0.799999V3.62L2.97563 6.4L6.83563 9.18V12Z"/>
+            </g>
+        </symbol>
+    
+        <symbol id="crossIcon" viewBox="0 0 24 24">
+            <g>
+                <path d="M2 2L22 22" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M22 2L2 22" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </g>
+        </symbol>
+    
+        <symbol id="datepickerIcon" viewBox="0 0 24 24">
+            <g>
+                <path d="M3 5V20C3 20.2652 3.10536 20.5196 3.29289 20.7071C3.48043 20.8946 3.73478 21 4 21H20C20.2652 21 20.5196 20.8946 20.7071 20.7071C20.8946 20.5196 21 20.2652 21 20V5M3 5C3 4.73478 3.10536 4.48043 3.29289 4.29289C3.48043 4.10536 3.73478 4 4 4H20C20.2652 4 20.5196 4.10536 20.7071 4.29289C20.8946 4.48043 21 4.73478 21 5M3 5V9H21V5M17 3V5M12 3V5M7 3V5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+        </symbol>
+    
+        <symbol id="timepickerIcon" viewBox="0 0 24 24">
+            <g>
+                <path d="M10 14L12 12V7" stroke="white" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="12" cy="12" r="8.5" stroke="white"/>
+            </g>
+        </symbol>
+    
+        <symbol id="fileIcon" viewBox="0 0 24 24">
+            <g>
+                <path d="M11.7711 4.244C12.8818 3.13916 14.3805 2.51256 15.9471 2.4981C17.5136 2.48365 19.0237 3.08248 20.1546 4.16663C21.2855 5.25078 21.9475 6.73425 21.9992 8.30002C22.0509 9.8658 21.488 11.3897 20.4311 12.546L20.2421 12.743L11.4421 21.541L11.4061 21.571C10.7209 22.1879 9.83127 22.5286 8.90935 22.5272C7.98742 22.5258 7.0988 22.1824 6.41552 21.5635C5.73224 20.9446 5.30291 20.0941 5.21064 19.1768C5.11838 18.2595 5.36974 17.3406 5.91606 16.598C5.93988 16.5519 5.96836 16.5083 6.00106 16.468L6.05506 16.408L6.14206 16.32L6.28306 16.172L6.28606 16.175L13.7221 8.721C13.8489 8.59383 14.0172 8.51642 14.1963 8.50284C14.3754 8.48926 14.5535 8.54041 14.6981 8.647L14.7821 8.72C14.9092 8.84686 14.9866 9.01515 15.0002 9.19427C15.0138 9.37338 14.9626 9.55142 14.8561 9.696L14.7841 9.78L7.18906 17.393C6.83754 17.8243 6.65995 18.3714 6.69116 18.9269C6.72236 19.4824 6.96011 20.0062 7.35771 20.3954C7.75531 20.7846 8.28405 21.0112 8.84011 21.0305C9.39616 21.0499 9.93937 20.8606 10.3631 20.5L19.1961 11.67C20.0145 10.8375 20.4776 9.71968 20.4876 8.5523C20.4976 7.38491 20.0538 6.25929 19.2497 5.41292C18.4456 4.56654 17.3442 4.06561 16.1778 4.01582C15.0115 3.96602 13.8714 4.37124 12.9981 5.146L12.8301 5.306L12.8181 5.32L3.28106 14.856C3.14723 14.9902 2.96757 15.0687 2.77818 15.0759C2.5888 15.083 2.40374 15.0182 2.26022 14.8944C2.11669 14.7706 2.02534 14.5971 2.00454 14.4087C1.98373 14.2204 2.03501 14.0311 2.14806 13.879L2.22106 13.795L11.7701 4.245L11.7711 4.244Z" fill="white"/>
+            </g>
+        </symbol>
+    </svg>
+        
+    <div class="page">
+        
+        <!-- Header -->
+
+        <header class="header z-10">
+          
+            <div class="header__inner container">
+        
+              <div class="menu">
+                <div class="menu-inner">
+                  <nav>
+                    <ul class="h3 xl:text-20 xl:leading-30 text-white topmenu">
+                      <li><a href="#" class="hv-undrl hv-undrl--white active">Главная</a></li>
+                      <li>
+                        <span class="plus --about"><span class="plus-inner">О нас</span></span>
+                        <div class="submenu --about">
+                          <ul>
+                            <li><a href="#" class="hv-undrl hv-undrl--white">О пабе</a></li>
+                            <li><a href="#" class="hv-undrl hv-undrl--white">События</a></li>
+                            <li><a href="#" class="hv-undrl hv-undrl--white">Акции</a></li>
+                            <li><a href="#" class="hv-undrl hv-undrl--white">услуги</a></li>
+                            <li><a href="#" class="hv-undrl hv-undrl--white">Вакансии</a></li>
+                          </ul>
+                        </div>
+                      </li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">меню</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Трансляции</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Журнал</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">контакты</a></li>
+                    </ul>
+                  </nav>
+                
+                  <ul class="botmenu h3 xl:text-20 xl:leading-30 text-white">
+                
+                    <li><a href="tel:+79959002190"
+                        class="text-20 leading-30 text-white uppercase font-bold hv-undrl hv-undrl--white active">+7 (995) 900-21-90</a>
+                    </li>
+                
+                    <li>
+                      <span class="relative z-10">eng</span>
+                      <div class="submenu">
+                        <ul>
+                          <li><a href="#" class="hv-undrl hv-undrl--white">ru</a></li>
+                          <li><a href="#" class="hv-undrl hv-undrl--white">eng</a></li>
+                        </ul>
+                      </div>
+                    </li>
+                
+                    <li class="sm:w-full"><button class="page-button sm:w-full" data-modal="#modal">Забронировать</button></li>
+                
+                  </ul>
+                </div>
+              
+              </div>
+              
+              <div class="logo img-contain absolute top-0 left-50% -translate-x-50% xl:relative xl:left-0 xl:translate-x-0">
+                <img src="./assets/images/logo/logo.jpg" alt="logo">
+              </div>
+              
+            
+              <button class="menu-button">
+                <span class="menu-button-wrapper">
+                  <span class="burger-button-close">
+                    <span id="first-line-burger"></span>
+                    <span id="second-line-burger"></span>
+                    <span id="third-line-burger"></span>
+                  </span>
+                </span>
+              </button>
+            </div>
+        </header>
+        
+        <div class="h-160 w-full xl:h-69"></div>
+        <!-- Main content -->
+        <main>
+
+            <div class="container mt-140 xl:mt-80 sm:hidden">
+              <ul class="breadCrumbs">
+                <li>
+                  <a href="#">Главная</a>
+                </li>
+                <li>></li>
+                <li class="activeBreadCrumbs">
+                  <a href="#">Услуги</a>
+                </li>
+                <li>></li>
+                <li class="activeBreadCrumbs">
+                  <a href="#">Сигарный клуб в Москве</a>
+                </li>
+              </ul>
+            </div>
+            
+            <section class="mt-40 xl:mt-50 container">
+              <h1 class="h2 text-white brnone xl:brblock">Сигарный клуб <br>в Москве</h1>
+            
+              <ul class="grid grid-cols-3 xl:grid-cols-2 sm:grid-cols-1 gap-40 xl:gap-20 mt-80 xl:mt-30">
+                <li>
+                  <div class="img-cover rounded-10 overflow-hidden h-full w-full xl:h-[60rem]">
+                    <img src="./assets/images/main/main-2.jpg" alt="about">
+                  </div>
+                </li>
+                <li class="flex flex-col">
+                  <div class="img-cover rounded-10 overflow-hidden h-[34rem] sm:h-[22rem] w-full xl:mt-20">
+                    <img src="./assets/images/main/main-3.jpg" alt="about">
+                  </div>
+                  <div class="text-white custom-text mt-40 xl:mt-0 xl:-order-1">
+                    <p>В нашем сигарном клубе вы можете арендовать зал для проведения мероприятия, деловой встречи, частной
+                      вечеринки и дегустации сигар в кругу единомышленников на любое время. Мы предлагаем соответствующую атмосферу,
+                      профессиональное обслуживание, вкусное меню и отличное времяпрепровождение.</p>
+                    <p>Московский Гастропаб Chelsea рад предложить залы разной вместимости, которые подойдут для мероприятий любого
+                      формата.</p>
+                    <p>Уютный интерьер в английском стиле, авторское меню, обширная барная карта и вышколенный персонал, – все это
+                      поможет сделать ваше торжество по-настоящему незабываемым.</p>
+                  </div>
+                  <div class="text-white custom-text h3 xl:h4-mob custom-undrl mt-80 xl:mt-40 sm:mt-20">
+                    Уютное место для настоящих ценителей сигар в Москве и отдыха в компании единомышленников
+                    Планируете организацию мероприятия, встречу с друзьями или партнерами?
+                    <br><br>
+                    Сигарный клуб в Chelsea pub – идеальное место, чтобы собраться вместе и расслабиться.
+                  </div>
+                </li>
+                <li>
+                  <div class="flex gap-20 flex-col-reverse xl:flex-col justify-between h-full">
+                    <div class="img-cover rounded-10 overflow-hidden h-[43.5rem] sm:h-[28rem] w-full">
+                      <img src="./assets/images/service/service-1.jpg" alt="about">
+                    </div>
+                    <div class="text-white custom-text font-medium">
+                      <p>В нашем сигарном клубе Мы создаем атмосферу спокойствия, удобства и комфорта. В клубе представлено
+                        идеальное сочетание британского стиля, интернациональной кухни. Здесь можно отобедать, как английская
+                        королева, и отдохнуть, как в лучших лондонских пабах. В нашем баре вам предложат в сопровождение к сигарам
+                        широкий выбор напитков, коктейлей и алкоголя. В нашем сигарном клубе вы можете выкурить сигару в любое время
+                        без ограничений.</p>
+                      <p>При необходимости в сигарный клуб можно даже пригласить специалиста, чтобы получить больше дополнительной
+                        информации о видах сигар, различных вкусах, кубинских сигарах и правилах курения сигар.</p>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </section>
+            
+            <section class="mt-200 xl:mt-100 container">
+              <div class="flex justify-between items-center pb-21 xl:pb-12 full-border">
+                <h2 class="h3 xl:h4-mob text-white">Комнаты сигарного клуба</h2>
+              </div>
+            
+              <ul class="grid grid-cols-2 sm:grid-cols-1 gap-40 xl:gap-20 mt-80 xl:mt-40 sm:mt-20">
+            
+                <li class="bg-dblue rounded-10 p-40 xl:p-20 space-y-20 sm:space-y-15">
+                  <div class="img-cover overflow-hidden rounded-10 block w-full h-[44rem] xl:h-[34rem] sm:h-[22.5rem]">
+                    <img src="./assets/images/service/service-2.jpg" alt="service">
+                  </div>
+                  <h2 class="h2 text-white">Большой банкетный зал</h2>
+                  <div class="text-white">Вместимость 80 чел.</div>
+                </li>
+            
+                <li class="bg-dblue rounded-10 p-40 xl:p-20 space-y-20 sm:space-y-15">
+                  <div class="img-cover overflow-hidden rounded-10 block w-full h-[44rem] xl:h-[34rem] sm:h-[22.5rem]">
+                    <img src="./assets/images/service/service-3.jpg" alt="service">
+                  </div>
+                  <h2 class="h2 text-white">Малый банкетный зал</h2>
+                  <div class="text-white">Вместимость 25 чел.</div>
+                </li>
+            
+              </ul>
+            </section>
+            
+            <section class="mt-200 xl:mt-100">
+              <div class="container">
+                <div class="flex justify-between items-center pb-21 xl:pb-12 full-border">
+                  <h2 class="h3 xl:h4-mob text-white">Фотогалерея</h2>
+                </div>
+              </div>
+            
+              <div class="container !pr-0">
+                <div class="swiper services-swiper --gallery container !pl-0 mt-80 xl:mt-30 sm:mt-20">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <a data-fancybox="gallery" href="./assets/images/gallery/gallery-1.jpg"
+                        class="img-cover overflow-hidden rounded-10 block w-full h-full">
+                        <img src="./assets/images/gallery/gallery-1.jpg" alt="gallery-img">
+                      </a>
+                    </div>
+                    <div class="swiper-slide">
+                      <a data-fancybox="gallery" href="./assets/images/gallery/gallery-2.jpg"
+                        class="img-cover overflow-hidden rounded-10 block w-full h-full">
+                        <img src="./assets/images/gallery/gallery-2.jpg" alt="gallery-img">
+                      </a>
+                    </div>
+                    <div class="swiper-slide">
+                      <a data-fancybox="gallery" href="./assets/images/gallery/gallery-3.jpg"
+                        class="img-cover overflow-hidden rounded-10 block w-full h-full">
+                        <img src="./assets/images/gallery/gallery-3.jpg" alt="gallery-img">
+                      </a>
+                    </div>
+                    <div class="swiper-slide">
+                      <a data-fancybox="gallery" href="./assets/images/gallery/gallery-4.jpg"
+                        class="img-cover overflow-hidden rounded-10 block w-full h-full">
+                        <img src="./assets/images/gallery/gallery-4.jpg" alt="gallery-img">
+                      </a>
+                    </div>
+                    <div class="swiper-slide --wider">
+                      <a data-fancybox="gallery" href="./assets/images/gallery/gallery-5.jpg"
+                        class="img-cover overflow-hidden rounded-10 block w-full h-full">
+                        <img src="./assets/images/gallery/gallery-5.jpg" alt="gallery-img">
+                      </a>
+                    </div>
+                    <div class="swiper-slide">
+                      <a data-fancybox="gallery" href="./assets/images/gallery/gallery-6.jpg"
+                        class="img-cover overflow-hidden rounded-10 block w-full h-full">
+                        <img src="./assets/images/gallery/gallery-6.jpg" alt="gallery-img">
+                      </a>
+                    </div>
+                    <div class="swiper-slide">
+                      <a data-fancybox="gallery" href="./assets/images/gallery/gallery-7.jpg"
+                        class="img-cover overflow-hidden rounded-10 block w-full h-full">
+                        <img src="./assets/images/gallery/gallery-7.jpg" alt="gallery-img">
+                      </a>
+                    </div>
+                    <div class="swiper-slide">
+                      <a data-fancybox="gallery" href="./assets/images/gallery/gallery-8.jpg"
+                        class="img-cover overflow-hidden rounded-10 block w-full h-full">
+                        <img src="./assets/images/gallery/gallery-8.jpg" alt="gallery-img">
+                      </a>
+                    </div>
+                    <div class="swiper-slide --wider">
+                      <a data-fancybox="gallery" href="./assets/images/gallery/gallery-9.jpg"
+                        class="img-cover overflow-hidden rounded-10 block w-full h-full">
+                        <img src="./assets/images/gallery/gallery-9.jpg" alt="gallery-img">
+                      </a>
+                    </div>
+                    <div class="swiper-slide">
+                      <a data-fancybox="gallery" href="./assets/images/gallery/gallery-10.jpg"
+                        class="img-cover overflow-hidden rounded-10 block w-full h-full">
+                        <img src="./assets/images/gallery/gallery-10.jpg" alt="gallery-img">
+                      </a>
+                    </div>
+                    <div class="swiper-slide">
+                      <a data-fancybox="gallery" href="./assets/images/gallery/gallery-11.jpg"
+                        class="img-cover overflow-hidden rounded-10 block w-full h-full">
+                        <img src="./assets/images/gallery/gallery-11.jpg" alt="gallery-img">
+                      </a>
+                    </div>
+                    <div class="swiper-slide">
+                      <a data-fancybox="gallery" href="./assets/images/gallery/gallery-12.jpg"
+                        class="img-cover overflow-hidden rounded-10 block w-full h-full">
+                        <img src="./assets/images/gallery/gallery-12.jpg" alt="gallery-img">
+                      </a>
+                    </div>
+                    <div class="swiper-slide">
+                      <a data-fancybox="gallery" href="./assets/images/gallery/gallery-13.jpg"
+                        class="img-cover overflow-hidden rounded-10 block w-full h-full">
+                        <img src="./assets/images/gallery/gallery-13.jpg" alt="gallery-img">
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            
+            <section class="mt-200 xl:mt-100 relative container">
+              <div class="grid grid-cols-2 xl:grid-cols-1 gap-40 xl:gap-50">
+            
+                <div class="pt-80 xl:pt-0 flex flex-col gap-40 xl:gap-20">
+            
+                  <div>
+                    <div class="flex justify-between gap-20 sm:gap-5 h3 xl:h4-mob text-white pb-20 sm:pb-10 custom-border-full">
+                      <div class="justify-self-start">Дополнительное оборудование</div>
+                    </div>
+                  </div>
+            
+                  <ul class="space-y-20 sm:space-y-15">
+                    <li class="flex items-center gap-40 xl:gap-20">
+                      <div class="img-contain w-80 h-80 ">
+                        <img src="./assets/images/service/svg/svg-1.svg" alt="svg">
+                      </div>
+            
+                      <div class="text-white">
+                        Диджейский пульт для музыки
+                      </div>
+                    </li>
+            
+                    <li class="flex items-center gap-40 xl:gap-20">
+                      <div class="img-contain w-80 h-80 ">
+                        <img src="./assets/images/service/svg/svg-2.svg" alt="svg">
+                      </div>
+            
+                      <div class="text-white">
+                        Проектор для презентаций
+                      </div>
+                    </li>
+            
+                    <li class="flex items-center gap-40 xl:gap-20">
+                      <div class="img-contain w-80 h-80 ">
+                        <img src="./assets/images/service/svg/svg-3.svg" alt="svg">
+                      </div>
+            
+                      <div class="text-white">
+                        Микрофон
+                      </div>
+                    </li>
+            
+                    <li class="flex items-center gap-40 xl:gap-20">
+                      <div class="img-contain w-80 h-80 ">
+                        <img src="./assets/images/service/svg/svg-4.svg" alt="svg">
+                      </div>
+            
+                      <div class="text-white">
+                        Музыкальные колонки
+                      </div>
+                    </li>
+                  </ul>
+            
+                </div>
+            
+                <div class="p-80 xl:p-35 sm:p-20 relative rounded-10 bg-dblue overflow-auto">
+              
+                  <form action="#" class="flex flex-col gap-40 xl:gap-20 max-w-640">
+                    <div class="pb-20 sm:pb-10 custom-border-full">
+                      <h2 class="h3 xl:h4-mob text-white brnone sm:brblock">Организация мероприятий <br>в сигарном клубе</h2>
+                    </div>
+            
+                    <div class="text-white">
+                      Мы можем организовать мероприятие «под ключ» индивидуально под каждого клиента: разработать специальное банкетное меню нашего ресторана, украсить зал и организовать музыкальное сопровождение. Но вы также можете пригласить своих декораторов и других музыкантов. Условия проведения мероприятий для сигарного клуба обговариваются индивидуально. Просто позвоните нам, и администраторы ответят на все ваши вопросы.
+                    </div>
+              
+                    <div class="grid grid-cols-2 sm:grid-cols-1 gap-20">
+                      <div class="input-container relative w-full">
+                        <input type="text" name="name" class="custom-input w-full" required>
+                        <div class="input-placeholder">Имя</div>
+                      </div>
+                
+                      <div class="input-container relative w-full">
+                        <input type="tel" name="tel" class="custom-input w-full" required>
+                        <div class="input-placeholder">Телефон</div>
+                      </div>
+            
+                    </div>
+              
+                    <div class="flex gap-20 sm:gap-10 sm:flex-col">
+                      <button type="submit" class="page-button">Забронировать</button>
+                      <div class="opacity-40 text-white brnone xl:brblock sm:text-14 sm:leading-19">Нажимая кнопку, вы соглашаетесь<br> с политикой обработки <a href="#">персональных данных</a></div>
+                    </div>
+              
+                  </form>
+                </div>
+            
+              </div>
+            </section>
+            
+            <section class="mt-200 xl:mt-100">
+              <div class="container">
+                <div class="flex justify-between items-center pb-21 xl:pb-12 full-border">
+                  <h2 class="h3 xl:h4-mob text-white">Услуги</h2>
+                  <a href="#" class="h3 xl:h4-mob text-white plus">Все услуги</a>
+                </div>
+              </div>
+            
+              <div class="swiper services-swiper container">
+                <ul class="swiper-wrapper mt-200 xl:mt-150">
+                  <li class="swiper-slide bg-dblue rounded-10 min-h-[46rem] xl:min-h-[38rem] hoverplus">
+                    <a href="#" class="p-40 xl:p-20 flex flex-col justify-between h-full xl:min-h-[38rem]">
+                      <span class="-mt-160 xl:-mt-140">
+                        <span class="img-cover rounded-10 overflow-hidden block h-[24rem]">
+                          <img src="./assets/images/services-block/services-block-1.jpg" alt="services-img">
+                        </span>
+                
+                        <span class="h2 text-white mt-40 block">Дни <br>рождения</span>
+                      </span>
+              
+                      <span class="grid grid-cols-[32.1rem_4rem] xl:grid-cols-[19rem_4rem] justify-between items-end">
+                        <span class="text-white brnone xl:brblock">Забронируйте<br> паб для компании</span>
+                        <span class="custom-plus"></span>
+                      </span>
+                    </a>
+                  </li>
+                  <li class="swiper-slide bg-dblue rounded-10 min-h-[46rem] xl:min-h-[38rem] hoverplus">
+                    <a href="#" class="p-40 xl:p-20 flex flex-col justify-between h-full xl:min-h-[38rem]">
+                      <span class="-mt-160 xl:-mt-140">
+                        <span class="img-cover rounded-10 overflow-hidden block h-[24rem]">
+                          <img src="./assets/images/services-block/services-block-2.jpg" alt="services-img">
+                        </span>
+                
+                        <span class="h2 text-white mt-40 block">Паб для девичника</span>
+                      </span>
+              
+                      <span class="grid grid-cols-[32.1rem_4rem] xl:grid-cols-[19rem_4rem] justify-between items-end">
+                        <span class="text-white brnone xl:brblock">Забронируйте<br> паб для девичника</span>
+                        <span class="custom-plus"></span>
+                      </span>
+                    </a>
+                  </li>
+                  <li class="swiper-slide bg-dblue rounded-10 min-h-[46rem] xl:min-h-[38rem] hoverplus">
+                    <a href="#" class="p-40 xl:p-20 flex flex-col justify-between h-full xl:min-h-[38rem]">
+                      <span class="-mt-160 xl:-mt-140">
+                        <span class="img-cover rounded-10 overflow-hidden block h-[24rem]">
+                          <img src="./assets/images/services-block/services-block-3.jpg" alt="services-img">
+                        </span>
+                
+                        <span class="h2 text-white mt-40 block">Паб для мальчишника</span>
+                      </span>
+              
+                      <span class="grid grid-cols-[32.1rem_4rem] xl:grid-cols-[19rem_4rem] justify-between items-end">
+                        <span class="text-white brnone xl:brblock">Забронируйте<br> паб для мальчишника</span>
+                        <span class="custom-plus"></span>
+                      </span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            
+            </section>
+            
+            <section class="mt-200 xl:mt-100 container">
+              <ul class="grid grid-cols-3 xl:grid-cols-1 gap-40 xl:gap-20">
+                <li class="bg-dblue min-h-[54rem] xl:min-h-[20rem] hoverplus rounded-10">
+                  <a href="#" class="p-40 xl:p-20 flex flex-col justify-between h-full">
+                    <span class="h2 xl:h3-mob text-white block custom-undrl">Авторская кухня</span>
+                    <span class="grid grid-cols-[32.1rem_4rem] xl:grid-cols-[24.7rem_4rem] justify-between mt-10">
+                      <span class="text-white">Несколько слов о кухне, какие блюда подаются и так далее Amet minim
+                        mollit non deserunt ullamco est sit aliqua dolor do amet sint.</span>
+                      <span class="custom-plus self-end"></span>
+                    </span>
+                  </a>
+                </li>
+                <li class="bg-dblue min-h-[54rem] xl:min-h-[20rem] hoverplus rounded-10">
+                  <a href="#" class="p-40 xl:p-20 flex flex-col justify-between h-full">
+                    <span class="h2 xl:h3-mob text-white block custom-undrl">Более 100 сортов виски</span>
+                    <span class="grid grid-cols-[32.1rem_4rem] xl:grid-cols-[24.7rem_4rem] justify-between mt-10">
+                      <span class="text-white">Несколько слов о виски Velit officia consequat duis enim velit
+                        mollit.</span>
+                      <span class="custom-plus self-end"></span>
+                    </span>
+                  </a>
+                </li>
+                <li class="bg-dblue min-h-[54rem] xl:min-h-[20rem] hoverplus rounded-10">
+                  <a href="#" class="p-40 xl:p-20 flex flex-col justify-between h-full">
+                    <span class="h2 xl:h3-mob text-white block custom-undrl">Более 15 сортов пива</span>
+                    <span class="grid grid-cols-[32.1rem_4rem] xl:grid-cols-[24.7rem_4rem] justify-between mt-10">
+                      <span class="text-white">Несколько слов о пиве Amet minim mollit non deserunt ullamco est sit
+                        aliqua dolor do amet sint. Exercitation veniam consequat sunt nostrud amet.</span>
+                      <span class="custom-plus self-end"></span>
+                    </span>
+                  </a>
+                </li>
+              </ul>
+            </section>
+            
+            <section class="mt-200 xl:mt-100 container xl:!px-0">
+              <div class="p-140 xl:px-20 xl:py-50 bg-dblue rounded-10 xl:rounded-none">
+                <div class="flex justify-between items-center pb-21 xl:pb-12 full-border">
+                  <h2 class="h3 xl:h4-mob text-white">Наши хиты</h2>
+                  <a href="#" class="h3 xl:h4-mob text-white plus">Полное Меню</a>
+                </div>
+            
+                <div class="hit relative mt-80 xl:mt-30">
+                  <div class="swiper hit-swiper hit-two-column">
+                    <div class="swiper-wrapper">
+                      <div class="swiper-slide">
+                        <a data-fancybox href="./assets/images/hits/hits-1.jpg" class="img-cover rounded-10 overflow-hidden xl:w-[26rem] h-[55rem] xl:h-[27.5rem]">
+                          <img src="./assets/images/hits/hits-1.jpg" alt="hits">
+                        </a>
+                        <div class="text-white flex flex-col justify-between">
+                          <div class="space-y-31 xl:space-y-10 xl:flex xl:flex-col xl:items-center">
+                            <h3 class="h2">Tower set</h3>
+                            <div class="opacity-40 xl:text-18 xl:leading-25">0,8-0,9 кг</div>
+                            <div class="xl:text-center">Состав: Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
+                              Voluptate
+                              exercitation incididunt aliquip deserunt reprehenderit elit laborum.</div>
+                          </div>
+                          <div class="mt-20">
+                            <div class="flex gap-20 items-baseline xl:justify-between">
+                              <div class="h3 xl:text-20 xl:leading-30">2100 ₽</div>
+                              <div class="opacity-40 xl:text-18 xl:leading-25">/ порция</div>
+                              <div class="opacity-40 xl:text-18 xl:leading-25">/ 2 персоны</div>
+                            </div>
+                            <button class="page-button mt-40 xl:mt-20">Предзаказ</button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="swiper-slide">
+                        <a data-fancybox href="./assets/images/hits/hits-1.jpg" class="img-cover rounded-10 overflow-hidden xl:w-[26rem] h-[55rem] xl:h-[27.5rem]">
+                          <img src="./assets/images/hits/hits-1.jpg" alt="hits">
+                        </a>
+                        <div class="text-white flex flex-col justify-between">
+                          <div class="space-y-31 xl:space-y-10 xl:flex xl:flex-col xl:items-center">
+                            <h3 class="h2">Tower set</h3>
+                            <div class="opacity-40 xl:text-18 xl:leading-25">0,8-0,9 кг</div>
+                            <div class="xl:text-center">Состав: Nulla Lorem mollit cupidatat irure. Laborum magna nulla duis ullamco cillum dolor.
+                              Voluptate
+                              exercitation incididunt aliquip deserunt reprehenderit elit laborum.</div>
+                          </div>
+                          <div class="mt-20">
+                            <div class="flex gap-20 items-baseline xl:justify-between">
+                              <div class="h3 xl:text-20 xl:leading-30">2100 ₽</div>
+                              <div class="opacity-40 xl:text-18 xl:leading-25">/ порция</div>
+                              <div class="opacity-40 xl:text-18 xl:leading-25">/ 2 персоны</div>
+                            </div>
+                            <button class="page-button mt-40 xl:mt-20">Предзаказ</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            
+                  <div class="absolute top-50% xl:top-137 -translate-y-50% -right-100 xl:right-0 z-10 next">
+                    <svg class="fill-white w-19 h-34">
+                      <use href='#arrowr'></use>
+                    </svg>
+                  </div>
+                  <div class="absolute top-50% xl:top-137 -translate-y-50% -left-100 xl:left-0 z-10 prev">
+                    <svg class="fill-white w-19 h-34">
+                      <use href='#arrowl'></use>
+                    </svg>
+                  </div>
+            
+                </div>
+            
+              </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer mt-200 xl:mt-100 container">
+          <h2 class="h1 xl:text-70 text-white opacity-40 text-center">Chelsea Gastropub</h2>
+        
+          <div class="footer-mid mt-80 xl:mt-30">
+        
+            <div class="logo img-contain absolute top-0 left-50% -translate-x-50%">
+              <img src="./assets/images/logo/logo.jpg" alt="logo">
+            </div>
+        
+            <div class="grid grid-cols-[24rem_24rem] xl:grid-cols-2 sm:grid-cols-1 xl:gap-40 justify-between">
+              <ul class="text-white">
+                <li><a class="h3  xl:h4-mob hv-undrl hv-undrl--white" href="#">Контакты<a></li>
+                <li>
+                  <ul class="mt-40 sm:mt-20 space-y-16 sm:space-y-12">
+                    <li><a href="tel:+79959002190" class="hv-undrl hv-undrl--white">+7 995 900-21-90</a></li>
+                    <li>Малый Гнездниковский пер. 12/27</li>
+                    <li><a href="mailto:pub.chelsea@mail.ru" class="hv-undrl hv-undrl--white">pub.chelsea@mail.ru</a></li>
+                  </ul>
+                </li>
+              </ul>
+          
+          
+              <nav>
+                <ul class="text-white">
+                  <li><a class="h3  xl:h4-mob hv-undrl hv-undrl--white" href="#">о нас<a></li>
+                  <li>
+                    <ul class="mt-40 sm:mt-20 space-y-16 sm:space-y-12">
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Вакансии</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Журнал</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Карта сайта</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Политика конфиденциальности</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+        
+        
+            <div class="grid grid-cols-[24rem_24rem] xl:grid-cols-2 sm:grid-cols-1 xl:gap-40 justify-between">
+              <nav>
+                <ul class="text-white">
+                  <li><a class="h3  xl:h4-mob hv-undrl hv-undrl--white" href="#">меню<a></li>
+                  <li>
+                    <ul class="mt-40 sm:mt-20 space-y-16 sm:space-y-12">
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Гриль бар</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Стейк бар</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Супы</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Горячие блюда</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Бизнес-ланч</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Барное меню</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Виски-бар</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+          
+              <nav>
+                <ul class="text-white">
+                  <li><a class="h3  xl:h4-mob hv-undrl hv-undrl--white" href="#">услуги<a></li>
+                  <li>
+                    <ul class="mt-40 sm:mt-20 space-y-16 sm:space-y-12">
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Корпоратив</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">День рождения</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Банкет</a></li>
+                      <li><a href="#" class="hv-undrl hv-undrl--white">Спортивные трансляции</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        
+          <div class="footer-bot flex justify-between xl:items-center xl:flex-col xl:gap-20 text-white py-20">
+            <div class="text-18 leading-25 opacity-40 xl:text-center brnone xl:brblock">© 2013 – 2022, <br>Гастропаб Челси<br>ИНН 7706289027<br>КПП 771001001</div>
+            <a href="https://bydesign.by/" class="text-18 leading-25 opacity-40">Разработка сайта Студия ЯР</a>
+          </div>
+        
+        </footer>
+    </div>
+
+    <!-- Order-modal -->
+    <div class="regModal bg-[rgba(0,0,0,0.6)] fixed top-0 left-0 w-full h-full z-[1000] flex items-center justify-center py-20 opacity-0"
+      id="modal" hidden>
+    
+      <div class="p-80 xl:p-35 relative rounded-10 bg-dblue w-max max-h-[80rem] xl:max-h-full overflow-auto">
+        <button class="close-button absolute top-40 xl:top-15 right-40 xl:right-15">
+          <svg class="w-24 h-24">
+            <use href='#crossIcon'></use>
+          </svg>
+        </button>
+    
+        <form action="#" class="flex flex-col gap-40 xl:gap-20 max-w-640">
+          <div class="pb-20 sm:pb-10 custom-border-full">
+            <h2 class="page-h2 xl:h3-mob text-white"><span class="xl:hidden">Забронируйте стол в нашем пабе</span><span class="hidden xl:block">Бронирование стола</span></h2>
+          </div>
+    
+          <div class="grid grid-cols-2 sm:grid-cols-1 gap-20">
+            <div class="input-container relative w-full">
+              <input type="text" name="name" class="custom-input w-full" required>
+              <div class="input-placeholder">Имя</div>
+            </div>
+    
+            <div class="input-container relative w-full">
+              <input type="number" name="guestsNumber" class="custom-input w-full" required>
+              <div class="input-placeholder">Количество гостей</div>
+            </div>
+      
+            <div class="input-container relative w-full">
+              <input type="tel" name="tel" class="custom-input w-full" required>
+              <div class="input-placeholder">Телефон</div>
+            </div>
+      
+            <div class="input-container relative w-full">
+              <input type="email" name="mail" class="custom-input w-full" required>
+              <div class="input-placeholder">E-mail</div>
+            </div>
+    
+            <div class="input-container relative w-full date-container">
+              <input type="text" name="date" class="custom-input w-full date-input" readonly required autocomplete="off">
+              <div class="input-placeholder">Дата</div>
+              <svg class="w-24 h-24 top-18 right-12 absolute fill-transparent opacity-40"><use href='#datepickerIcon'></use></svg>
+            </div>
+    
+            <div class="input-container relative w-full">
+              <input type="text" class="custom-input w-full only-time datepicker-here" readonly name="time" required autocomplete="off"/>
+              <div class="input-placeholder">Время</div>
+              <svg class="w-24 h-24 top-18 right-12 absolute fill-transparent opacity-40"><use href='#timepickerIcon'></use></svg>
+            </div>
+    
+            <div class="input-container relative w-full col-span-2 sm:col-span-1">
+              <textarea name="wishes" class="custom-textarea w-full"></textarea>
+              <div class="input-placeholder">Ваши пожелания (необязательно)</div>
+            </div>
+          </div>
+    
+          <div class="flex gap-20 sm:flex-col">
+            <button type="submit" class="page-button">Забронировать</button>
+            <div class="opacity-40 text-white brnone xl:brblock">Нажимая кнопку, вы соглашаетесь<br> с политикой обработки <a href="#" class="underline">персональных данных</a></div>
+          </div>
+    
+        </form>
+      </div>
+    </div>
+        <!-- Feedback-modal -->
+        <div class="regModal bg-[rgba(0,0,0,0.6)] fixed top-0 left-0 w-full h-full z-[1001] flex items-center justify-center px-20 opacity-0"
+          id="feedback" hidden>
+        
+          <div class="p-60 xl:px-20 xl:py-50 relative rounded-10 bg-dblue w-max overflow-auto">
+            <button class="close-button absolute top-20 xl:top-15 right-20 xl:right-15">
+              <svg class="w-17 h-17 object-contain">
+                <use href='#crossIcon'></use>
+              </svg>
+            </button>
+        
+            <div class="space-y-20 xl:space-y-10 max-w-400">
+              <h2 class="h2 text-center text-white">Спасибо за заявку</h2>
+              <div class="text-center text-white">
+                Ваша заявка принята, наши специалисты свяжутся с вами в ближайшее время
+              </div>
+            </div>
+          </div>
+        </div>
+    <!-- JS -->
+    <script src="assets/js/temp.js"></script>
+    <script src="assets/js/vendor.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+
+</html>
