@@ -66,6 +66,17 @@ for (const form of document.forms) {
         el.classList.remove('havetext')
       })
     }
+    const fileInputText = document.querySelectorAll('.file-text');
+    if (fileInputText.length) {
+      fileInputText.forEach(el => {
+        const inputText = el.dataset.filetext
+        if (inputText) {
+          el.innerHTML = inputText;
+        } else {
+          el.innerHTML = 'Прикрепить резюме';
+        }
+      })
+    }
 
     if (parent) {
       modalHandler.apply(parent);

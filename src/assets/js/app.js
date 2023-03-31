@@ -87,7 +87,17 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   scrollAdd();
-  scrollHeader();
+  function initHeader () {
+    var currentScrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    const num = xl.matches ? 50 : 150;
+    if (currentScrollPos > num) {
+      header.classList.add('header--active');
+    } else {
+      header.classList.remove('header--active');
+    }
+  }
+
+  initHeader();
 
   var prevScrollpos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
   function scrollHeader() {
@@ -531,7 +541,9 @@ if (window.matchMedia("(max-width: 1024px)").matches) {
 
 
 
-menuBtns[0].click();
+if (menuBtns.length) {
+  menuBtns[0].click();
+}
 
 
 
