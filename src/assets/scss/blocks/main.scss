@@ -297,6 +297,7 @@
 }
 
 .custom-img {
+  width: calc(100% - 28rem);
   @apply absolute bottom-[-36rem] xl:left-20 xl:-bottom-80 h-[71.2rem] xl:h-[30rem] sm:h-180;
   @include breakpoint($xl-bp) {
     width: calc(100% - 4rem);

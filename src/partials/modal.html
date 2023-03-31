@@ -20,7 +20,7 @@
         </div>
 
         <div class="input-container relative w-full">
-          <input type="number" name="name" class="custom-input w-full" required>
+          <input type="number" name="guestsNumber" class="custom-input w-full" required>
           <div class="input-placeholder">Количество гостей</div>
         </div>
   
@@ -35,13 +35,13 @@
         </div>
 
         <div class="input-container relative w-full date-container">
-          <input type="text" name="date" class="custom-input w-full date-input" required autocomplete="off">
+          <input type="text" name="date" class="custom-input w-full date-input" readonly required autocomplete="off">
           <div class="input-placeholder">Дата</div>
           <svg class="w-24 h-24 top-18 right-12 absolute fill-transparent opacity-40"><use href='#datepickerIcon'></use></svg>
         </div>
 
         <div class="input-container relative w-full">
-          <input type="text" class="custom-input w-full only-time datepicker-here" name="time" required/>
+          <input type="text" class="custom-input w-full only-time datepicker-here" readonly name="time" required autocomplete="off"/>
           <div class="input-placeholder">Время</div>
           <svg class="w-24 h-24 top-18 right-12 absolute fill-transparent opacity-40"><use href='#timepickerIcon'></use></svg>
         </div>
