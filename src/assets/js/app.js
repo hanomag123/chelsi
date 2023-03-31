@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const xl = matchMedia('(max-width: 1024px)')
+  const xl = matchMedia('(max-width: 1024px)');
 
   class Menu {
     constructor(menuElement, buttonElement) {
@@ -67,14 +67,14 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   };
 
-  const menu = document.querySelector('.menu')
-  const menuButton = document.querySelector('.menu-button')
+  const menu = document.querySelector('.menu');
+  const menuButton = document.querySelector('.menu-button');
 
   if (menu && menuButton) {
-    new Menu(menu, menuButton)
+    new Menu(menu, menuButton);
   }
 
-  const header = document.querySelector('header')
+  const header = document.querySelector('header');
 
   let handler;
 
@@ -86,29 +86,30 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener('scroll', handler, false);
   }
 
-  scrollAdd()
+  scrollAdd();
+  scrollHeader();
 
   var prevScrollpos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
   function scrollHeader() {
     var currentScrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
     if (currentScrollPos < 0) {
-      currentScrollPos = 0
-      prevScrollpos = 0
+      currentScrollPos = 0;
+      prevScrollpos = 0;
     }
     if (prevScrollpos < 0) {
-      prevScrollpos = 0
-      currentScrollPos = 0
+      prevScrollpos = 0;
+      currentScrollPos = 0;
     }
-    const num = xl.matches ? 50 : 150
+    const num = xl.matches ? 50 : 150;
     if (currentScrollPos > num) {
-      header.classList.add('header--active')
+      header.classList.add('header--active');
     } else {
-      header.classList.remove('header--active')
+      header.classList.remove('header--active');
     }
     if (prevScrollpos >= currentScrollPos) {
-      header.classList.remove('out')
+      header.classList.remove('out');
     } else {
-      header.classList.add('out')
+      header.classList.add('out');
     }
     prevScrollpos = currentScrollPos;
   }
@@ -120,18 +121,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function wrapper() {
 
-      if (isThrottled) { // (2)
+      if (isThrottled) { // (2);
         savedArgs = arguments;
         savedThis = this;
         return;
       }
 
-      func.apply(this, arguments); // (1)
+      func.apply(this, arguments); // (1);
 
       isThrottled = true;
 
       setTimeout(function () {
-        isThrottled = false; // (3)
+        isThrottled = false; // (3);
         if (savedArgs) {
           wrapper.apply(savedThis, savedArgs);
           savedArgs = savedThis = null;
@@ -143,10 +144,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  const numberOfSlides = document.querySelectorAll('.grid-block__swiper .swiper-slide').length
+  const numberOfSlides = document.querySelectorAll('.grid-block__swiper .swiper-slide').length;
 
   function updSwiperNumericPagination() {
-    const index = this.realIndex + 1
+    const index = this.realIndex + 1;
     this.el.querySelector(".swiper-counter").innerHTML = '<span class="count">' + (index < 10 ? '0' + index : index) + '</span><span class="total">/' + (numberOfSlides < 10 ? '0' + numberOfSlides : numberOfSlides) + "</span>";
   }
 
@@ -159,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     on: {
       init: updSwiperNumericPagination,
-      slideChange: updSwiperNumericPagination
+      slideChange: updSwiperNumericPagination,
     }
   });
 
@@ -200,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
               next.innerHTML = `<span>${nextTextNew.dataset.title}</span>`;
               prev.innerHTML = `<span>${prevTextNew.dataset.title}</span>`;
             }
-            return
+            return;
           }
         }
         if (nextText && next) {
@@ -217,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   });
 
-  const mobileSwipers = document.querySelectorAll('.services-swiper')
+  const mobileSwipers = document.querySelectorAll('.services-swiper');
   if (mobileSwipers.length) {
     if (xl.matches) {
       mobileSwipers.forEach(el => {
@@ -237,12 +238,12 @@ document.addEventListener("DOMContentLoaded", () => {
             });
           } else {
             if (swiper4) {
-              console.log(swiper4)
+              console.log(swiper4);
               swiper4.destroy(true, true);
             }
           };
         });
-      })
+      });
     }
   }
 
@@ -264,31 +265,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (modal) {
       if (modal.hidden) {
-        modal.hidden = !modal.hidden
+        modal.hidden = !modal.hidden;
         modal.style.setProperty('pointer-events', 'auto');
         setTimeout(() => {
-          modal.style.opacity = 1
+          modal.style.opacity = 1;
         }, 10);
       } else {
-        modal.style.opacity = 0
+        modal.style.opacity = 0;
         modal.style.setProperty('pointer-events', null);
         const numb = Number(getComputedStyle(modal).transitionDuration.match(/(\d+\.\d+)|(\d+)/g)[0]);
         if (numb > 0) {
           modal.addEventListener('transitionend', hideaftertransition);
         } else {
-          modal.hidden = true
+          modal.hidden = true;
         }
       }
     }
   }
 
   function disableScroll() {
-    // Get the current page scroll position
+    // Get the current page scroll position;
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
     document.documentElement.style.setProperty('scroll-behavior', 'auto');
 
-    // if any scroll is attempted, set this to the previous value
+    // if any scroll is attempted, set this to the previous value;
     window.onscroll = function () {
       window.scrollTo(scrollLeft, scrollTop);
     };
@@ -321,7 +322,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const buttonsModal = document.querySelectorAll('[data-modal]');
 
   function hideaftertransition() {
-    this.hidden = true
+    this.hidden = true;
     this.removeEventListener('transitionend', hideaftertransition);
   }
 
@@ -330,71 +331,67 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  const inputs = document.querySelectorAll('input,textarea')
+  const inputs = document.querySelectorAll('input,textarea');
   if (inputs.length) {
     inputs.forEach(el => {
-      el.value ? el.classList.add('havetext') : el.classList.remove('havetext')
+      el.value ? el.classList.add('havetext') : el.classList.remove('havetext');
       el.addEventListener('input', function () {
-        this.value ? this.classList.add('havetext') : this.classList.remove('havetext')
-      })
-    })
+        this.value ? this.classList.add('havetext') : this.classList.remove('havetext');
+      });
+    });
   }
 
-  const dates = document.querySelectorAll('.date-container')
+  const dates = document.querySelectorAll('.date-input');
 
   if (dates.length) {
     dates.forEach(el => {
-      const date1 = el.querySelector('.date-input');
-      const date = new AirDatepicker(date1, {
+      const date = new AirDatepicker(el, {
         container: 'relative',
-        isMobile: true,
-        onHide: () => {
-          date.$el.classList.add('havetext')
-        },
+        isMobile: xl.matches,
         autoClose: true,
+        onShow: () => {
+          date.$el.classList.add('havetext');
+        },
+        onHide: () => {          
+          if (!date.$el.value) {
+            date.$el.classList.remove('havetext');
+          } else {
+            date.$el.classList.add('havetext');
+          }
+        },
+        onSelect: () => {
+          if (!date.$el.value) {
+            date.$el.classList.remove('havetext');
+          } else {
+            date.$el.classList.add('havetext');
+          }
+        }
       });
-      // new Datepicker(el, {
-      //   toValue: (date) => {
-      //     const arr = date.split(' - ')
-      //     if (arr[0] === '') {
-      //       return
-      //     }
-      //     date1.value = date
-
-      //     arr.forEach((el, i) => {
-      //       if (i === 0) {
-      //         // start.value = el
-      //       }
-      //       if (i === 1) {
-      //         // end.value = el
-      //         if (picker.length) {
-      //           picker.forEach(el => {
-      //             if (el._isOpen) {
-      //               el.hide()
-      //             }
-      //           })
-      //         }
-      //       } else {
-      //         // end.value = ''
-      //       }
-      //     })
-      //   }
-      // });
-    })
-
+    });
 
   }
+  const timePickers = document.querySelectorAll('.only-time');
 
-  const airPick = new AirDatepicker('.only-time', {
-    container: 'relative',
-    isMobile: true,
-    dateFormat: ' ',
-    timepicker: true,
-    classes: 'only-timepicker',
-    onHide: () => {
-      airPick.$el.classList.add('havetext')
-    }
-  });
+  if (timePickers) {
+    timePickers.forEach(timepicker => {
+      const airPick = new AirDatepicker(timepicker, {
+        container: 'relative',
+        isMobile: xl.matches,
+        dateFormat: ' ',
+        timepicker: true,
+        minutesStep: 10,
+        classes: 'only-timepicker',
+        onShow: () => {
+          airPick.$el.classList.add('havetext');
+        },
+        onHide: () => {          
+          if (!airPick.$el.value) {
+            airPick.$el.classList.remove('havetext');
+          }
+        }
+      });
+    });
+  }
 
   const magazineButtons = document.querySelectorAll('.magazine-buttons button');
   const magazineMain = document.querySelector('.magazine-main');
@@ -404,22 +401,22 @@ document.addEventListener("DOMContentLoaded", () => {
       button.addEventListener('click', function () {
         magazineButtons.forEach(el => {
           el.classList.remove('active');
-        })
+        });
         this.classList.add('active');
         magazineMain.innerHTML = this.innerHTML;
-        filterItems(this.dataset.filterbutton)
-      })
+        filterItems(this.dataset.filterbutton);
+      });
 
       if (button.classList.contains('active')) {
-        magazineMain.innerHTML = button.innerHTML
+        magazineMain.innerHTML = button.innerHTML;
       }
-    })
+    });
   }
 
   function filterItems(filterName) {
     const items = document.querySelectorAll('[data-filtername]');
     if (!items.length) {
-      return
+      return;
     }
     if (filterName === 'all') {
       items.forEach(el => el.hidden = false);
@@ -430,7 +427,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           el.hidden = true;
         }
-      })
+      });
     }
   }
 
@@ -438,58 +435,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (fileinput.length) {
     fileinput.forEach(el => {
-      const inputText = el.parentElement.querySelector('.file-text')
+      const inputText = el.parentElement.querySelector('.file-text');
       el.addEventListener('change', function () {
         if (this.value) {
           if (inputText) {
-            inputText.innerHTML = this.value.replace('C:\\fakepath\\', '')
+            inputText.innerHTML = this.value.replace('C:\\fakepath\\', '');
           }
         }
-      })
-    })
+      });
+    });
   }
 
 
-})
+});
 
-let menuBtns = document.querySelectorAll('.filter-btn')
-let menuItemsContainer = document.querySelector('.menuPage-menuContent__menuItemsContainer')
-let menuLeft = document.querySelector('.menuPage-menuContent__leftBlock')
-let menuRight = document.querySelector('.menuPage-menuContent__rightBlock')
-let hiddenBlock = document.querySelector('.menuPage-menuContent__hiddenHelpBlock')
-let menuPageLeftBlock = document.querySelector('.menuPage-menuContent_leftBlock')
-let counter = 0
+let menuBtns = document.querySelectorAll('.filter-btn');
+let menuItemsContainer = document.querySelector('.menuPage-menuContent__menuItemsContainer');
+let menuLeft = document.querySelector('.menuPage-menuContent__leftBlock');
+let menuRight = document.querySelector('.menuPage-menuContent__rightBlock');
+let hiddenBlock = document.querySelector('.menuPage-menuContent__hiddenHelpBlock');
+let menuPageLeftBlock = document.querySelector('.menuPage-menuContent_leftBlock');
+let counter = 0;
 
 if (window.matchMedia("(min-width: 1024px)").matches) {
   menuBtns.forEach(e => {
     e.addEventListener('click', function () {
       menuBtns.forEach(menuBtn => {
-        menuBtn.classList.remove('active')
-      })
-      this.classList.add('active')
-      menuPageLeftBlock.innerHTML = this.innerHTML
+        menuBtn.classList.remove('active');
+      });
+      this.classList.add('active');
+      menuPageLeftBlock.innerHTML = this.innerHTML;
       let menuItems = this.nextElementSibling.querySelectorAll('.menuPage-menuContent__menuItem');
-      counter = 0
+      counter = 0;
       menuLeft.innerHTML = ''
       menuRight.innerHTML = ''
   
       menuItems.forEach((e, id) => {
   
         if (id % 2 == 0 && counter < menuItems.length - 1) {
-          let a = document.createElement('div')
-          a.classList.add('helperContainer')
-          a.innerHTML = e.innerHTML
-          menuLeft.appendChild(a)
-          counter + 1
+          let a = document.createElement('div');
+          a.classList.add('helperContainer');
+          a.innerHTML = e.innerHTML;
+          menuLeft.appendChild(a);
+          counter + 1;
         } else if (id % 2 != 0 && counter < menuItems.length - 1) {
-          let a = document.createElement('div')
-          a.classList.add('helperContainer')
-          a.innerHTML = e.innerHTML
-          menuRight.appendChild(a)
-          counter + 1
+          let a = document.createElement('div');
+          a.classList.add('helperContainer');
+          a.innerHTML = e.innerHTML;
+          menuRight.appendChild(a);
+          counter + 1;
         }
   
-      })
+      });
 
       let menuContentSwiper = new Swiper(".menuPage-menuContent__swiper", {
         grabCursor: true,
@@ -500,10 +497,10 @@ if (window.matchMedia("(min-width: 1024px)").matches) {
         },
       });
   
-    })
+    });
   
   
-  })
+  });
 }
 
 if (window.matchMedia("(max-width: 1024px)").matches) {
@@ -511,11 +508,11 @@ if (window.matchMedia("(max-width: 1024px)").matches) {
     e.addEventListener('click', el => {
 
       menuBtns.forEach(el => {
-        el.classList.remove('activeBreadCrumbs')
-      })
-      e.classList.add('activeBreadCrumbs')
+        el.classList.remove('activeBreadCrumbs');
+      });
+      e.classList.add('activeBreadCrumbs');
       
-      menuItemsContainer.innerHTML = e.nextElementSibling.innerHTML
+      menuItemsContainer.innerHTML = e.nextElementSibling.innerHTML;
 
 
       let menuContentSwiper = new Swiper(".menuPage-menuContent__swiper", {
@@ -526,15 +523,15 @@ if (window.matchMedia("(max-width: 1024px)").matches) {
           prevEl: ".menuPage-menuContent__prev",
         },
       });
-    })
+    });
   
   
-  })
+  });
 }
 
 
 
-menuBtns[0].click()
+menuBtns[0].click();
 
 
 
