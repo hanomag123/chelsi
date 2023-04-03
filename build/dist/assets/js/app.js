@@ -602,7 +602,7 @@ const video = document.getElementById('preloadvideo');
 if (video) {
 video.addEventListener('ended',myHandler,false);
 function myHandler() {
-    modalHandler.apply(event.target)
+  video.style.opacity = "0"; setTimeout(() => video.style.display = 'none', 300);
 }
 }
 const preloader = document.getElementById('preloader');
