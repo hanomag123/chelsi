@@ -577,10 +577,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (location.pathname === '/menu' || '/menu.html') {
     const search = location.search;
-    if (location.search) {
-      const searchIndex = +search.match(/\?category=(\d)/)[1];
-      if (typeof searchIndex === 'number') {
-        const button = document.querySelector(`[data-item='${searchIndex}]`);
+    if (search) {
+      const searchMatch = search.match(/(?!\?category=)(\d+)/);
+      if (searchMatch) {
+        const number = +searchMatch[0];
+        const button = document.querySelector(`[data-item='${number}]`);
         if (button) {
           button.click();
         }
