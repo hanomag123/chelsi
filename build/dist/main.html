@@ -18,6 +18,21 @@
 </head>
 
 <body>
+
+    <!-- Preloader-->
+    <div class="preloader" id="preloader">
+        <div class="spin">
+            <div class="lds-ring"><div></div><div></div><div></div><div class="logo">
+              <img src="./assets/images/logo/logo.jpg" alt="">
+            </div></div>
+        </div>
+    </div>
+    <video class="fixed z-[100] top-0 left-0 w-full h-full bg-white transition-opacity duration-300 pointer-events-none" autoplay muted playsinline id="preloadvideo">
+        <source src="./chelsi.mp4" type="video/mp4">
+    </video>
+    
+    <!-- Sprites-->
+
     <svg style="display: none;">
     
         <symbol id="arrowr" viewBox="0 0 7 12">
@@ -229,16 +244,16 @@
                       </div>
                     </div>
                     <div class="swiper-counter"></div>
-                    <div class="absolute top-50% -translate-y-50% right-46 xl:right-15 z-10 next">
+                    <button class="absolute top-50% -translate-y-50% right-46 xl:right-15 z-10 next">
                       <svg class="fill-white w-7 h-20">
                         <use href='#arrowr'></use>
                       </svg>
-                    </div>
-                    <div class="absolute top-50% -translate-y-50% left-46 xl:left-15 z-10 prev">
+                    </button>
+                    <button class="absolute top-50% -translate-y-50% left-46 xl:left-15 z-10 prev">
                       <svg class="fill-white w-7 h-20">
                         <use href='#arrowl'></use>
                       </svg>
-                    </div>
+                    </button>
                   </div>
                 </div>
               </section>
@@ -300,16 +315,16 @@
                       </div>
                     </div>
             
-                    <div class="absolute top-50% xl:top-137 -translate-y-50% -right-100 xl:right-0 z-10 next">
+                    <button class="absolute top-50% xl:top-137 -translate-y-50% -right-100 xl:right-0 z-10 next">
                       <svg class="fill-white w-19 h-34">
                         <use href='#arrowr'></use>
                       </svg>
-                    </div>
-                    <div class="absolute top-50% xl:top-137 -translate-y-50% -left-100 xl:left-0 z-10 prev">
+                    </button>
+                    <button class="absolute top-50% xl:top-137 -translate-y-50% -left-100 xl:left-0 z-10 prev">
                       <svg class="fill-white w-19 h-34">
                         <use href='#arrowl'></use>
                       </svg>
-                    </div>
+                    </button>
             
                   </div>
             
@@ -395,18 +410,18 @@
             
                   <div class="container absolute bottom-0 right-0 z-10 xl:static">
                     <div class="flex justify-between items-center w-[80rem] xl:w-full ml-auto">
-                      <div class="next flex gap-40 xl:gap-20 items-center xl:absolute xl:left-20 xl:top-[20.8rem] xl:-translate-y-50% xl:z-10">
+                      <button class="next flex gap-40 xl:gap-20 items-center xl:absolute xl:left-20 xl:top-[20.8rem] xl:-translate-y-50% xl:z-10">
                         <svg class="fill-white w-19 h-34">
                           <use href='#arrowl'></use>
                         </svg>
-                        <div class="swiper-title-text h3 text-white"></div>
-                      </div>
-                      <div class="prev flex gap-40 xl:gap-20 items-center xl:absolute xl:right-20 xl:top-[20.8rem] xl:-translate-y-50% xl:z-10">
-                        <div class="swiper-title-text h3 text-white"></div>
+                        <span class="swiper-title-text h3 text-white"></span>
+                      </button>
+                      <button class="prev flex gap-40 xl:gap-20 items-center xl:absolute xl:right-20 xl:top-[20.8rem] xl:-translate-y-50% xl:z-10">
+                        <span class="swiper-title-text h3 text-white"></span>
                         <svg class="fill-white w-19 h-34">
                           <use href='#arrowr'></use>
                         </svg>
-                      </div>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -508,16 +523,16 @@
                         </div>
                       </div>
               
-                      <div class="absolute top-50% -translate-y-50% -right-100 xl:right-0 z-10 next">
+                      <button class="absolute top-50% -translate-y-50% -right-100 xl:right-0 z-10 next">
                         <svg class="fill-white w-19 h-34">
                           <use href='#arrowr'></use>
                         </svg>
-                      </div>
-                      <div class="absolute top-50% -translate-y-50% -left-100 xl:left-0 z-10 prev">
+                      </button>
+                      <button class="absolute top-50% -translate-y-50% -left-100 xl:left-0 z-10 prev">
                         <svg class="fill-white w-19 h-34">
                           <use href='#arrowl'></use>
                         </svg>
-                      </div>
+                      </button>
               
                     </div>
               
@@ -535,7 +550,7 @@
 
         <!-- Footer -->
         <footer class="footer mt-200 xl:mt-100 container">
-          <h2 class="h1 xl:text-70 text-white opacity-40 text-center">Chelsea Gastropub</h2>
+          <h2 class="h1 xl:text-70 text-white opacity-40 text-center">Chelsea Gastro&shy;pub</h2>
         
           <div class="footer-mid mt-80 xl:mt-30">
         
@@ -549,7 +564,7 @@
                 <li>
                   <ul class="mt-40 sm:mt-20 space-y-16 sm:space-y-12">
                     <li><a href="tel:+79959002190" class="hv-undrl hv-undrl--white">+7 995 900-21-90</a></li>
-                    <li>Малый Гнездниковский пер. 12/27</li>
+                    <li>Малый Гнездниковский пер. 12</li>
                     <li><a href="mailto:pub.chelsea@mail.ru" class="hv-undrl hv-undrl--white">pub.chelsea@mail.ru</a></li>
                   </ul>
                 </li>
@@ -700,6 +715,24 @@
     <script src="assets/js/temp.js"></script>
     <script src="assets/js/vendor.js"></script>
     <script src="assets/js/app.js"></script>
+
+    <script>
+    const video = document.getElementById('preloadvideo');
+    if (video) {
+    video.addEventListener('ended',myHandler,false);
+    function myHandler() {
+        modalHandler.apply(event.target)
+    }
+    }
+    window.onload = function() {
+        if (preloader) {
+            preloader.style.opacity = "0"; setTimeout(() => preloader.style.display = 'none', 300);
+        }
+        if (video) {
+            video.play();
+        }
+    }
+    </script>
 </body>
 
 </html>

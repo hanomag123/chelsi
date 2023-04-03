@@ -78,15 +78,79 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let handler;
 
-  function scrollAdd() {
-    /* ... */
-    handler = throttle(function (event) {
-      scrollHeader();
-    }, 500);
-    document.addEventListener('scroll', handler, false);
+  function scrollAdd(){
+      /* ... */
+      handler = throttle(function(event){
+          scrollHeader();
+      }, 500);
+      document.addEventListener('scroll', handler, false);
   }
+  
+  function scrollRemove(){
+      /* ... */
+      document.removeEventListener('scroll', handler, false);
+  }
+  
+  if (xl.matches) {
+    scrollAdd()
+    document.removeEventListener('scroll', scrollHeader)
+  } else {
+    document.addEventListener('scroll', scrollHeader)
+    scrollRemove()
+  }
+  
+    xl.addEventListener('change', () => {
+      if (xl.matches) {
+        document.removeEventListener('scroll', scrollHeader);
+        scrollAdd()
+      } else {
+        document.addEventListener('scroll', scrollHeader)
+        scrollRemove()
+      }
+    })
+  
+    function disableScroll() {
+      // Get the current page scroll position
+      const scrollTop = window.pageYOffset  || document.documentElement.scrollTop;
+      const scrollLeft = window.pageXOffset  || document.documentElement.scrollLeft;
+      document.documentElement.style.setProperty('scroll-behavior', 'auto')
+    
+          // if any scroll is attempted, set this to the previous value
+          window.onscroll = function() {
+              window.scrollTo(scrollLeft, scrollTop);
+          };
+  }
+  
+   function enableScroll() {
+    document.documentElement.style.setProperty('scroll-behavior', null)
+    window.onscroll = function() {};
+  }
+  
+  var prevScrollpos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+  function scrollHeader() {
+    var currentScrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+    if (currentScrollPos < 0) {
+      currentScrollPos = 0;
+      prevScrollpos = 0;
+    };
+    if (prevScrollpos < 0) {
+      prevScrollpos = 0;
+      currentScrollPos = 0;
+    };
+    const num = xl.matches ? 50 : 100;
+    if (currentScrollPos > num) {
+      header.classList.add('header--active');
+    } else {
+      header.classList.remove('header--active');
+    };
+    if (prevScrollpos >= currentScrollPos) {
+      header.classList.remove('out');
+    } else {
+      header.classList.add('out');
+    };
+    prevScrollpos = currentScrollPos;
+  };
 
-  scrollAdd();
   function initHeader () {
     var currentScrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
     const num = xl.matches ? 50 : 150;
@@ -98,31 +162,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   initHeader();
-
-  var prevScrollpos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-  function scrollHeader() {
-    var currentScrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-    if (currentScrollPos < 0) {
-      currentScrollPos = 0;
-      prevScrollpos = 0;
-    }
-    if (prevScrollpos < 0) {
-      prevScrollpos = 0;
-      currentScrollPos = 0;
-    }
-    const num = xl.matches ? 50 : 150;
-    if (currentScrollPos > num) {
-      header.classList.add('header--active');
-    } else {
-      header.classList.remove('header--active');
-    }
-    if (prevScrollpos >= currentScrollPos) {
-      header.classList.remove('out');
-    } else {
-      header.classList.add('out');
-    }
-    prevScrollpos = currentScrollPos;
-  }
 
   function throttle(func, ms) {
     let isThrottled = false,
@@ -356,7 +395,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (dates.length) {
     dates.forEach(el => {
       const date = new AirDatepicker(el, {
-        container: 'relative',
+        container: xl.matches ? '' : el.parentElement,
         isMobile: xl.matches,
         autoClose: true,
         onShow: () => {
@@ -385,7 +424,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (timePickers) {
     timePickers.forEach(timepicker => {
       const airPick = new AirDatepicker(timepicker, {
-        container: 'relative',
+        container: xl.matches ? '' : timepicker.parentElement,
         isMobile: xl.matches,
         dateFormat: ' ',
         timepicker: true,
@@ -455,6 +494,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
 
 
 });

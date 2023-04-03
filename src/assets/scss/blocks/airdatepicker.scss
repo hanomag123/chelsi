@@ -360,12 +360,18 @@
     display: flex;
     align-items: center;
     font-size: 11px;
-    height: 17px;
-    background: linear-gradient(to right, var(--adp-time-track-color), var(--adp-time-track-color)) left 50%/100% var(--adp-time-track-height) no-repeat
+    height: 2rem;
+    background: linear-gradient(to right, var(--adp-time-track-color), var(--adp-time-track-color)) left 50%/100% var(--adp-time-track-height) no-repeat;
+    @include breakpoint($xl-bp) {
+        height: 3rem;
+    }
 }
 
 .air-datepicker-time--row:first-child {
-    margin-bottom: 4px
+    margin-bottom: 0.5rem;
+    @include breakpoint($xl-bp) {
+        margin-bottom: 1rem;
+    }
 }
 
 .air-datepicker-time--row input[type=range] {
@@ -495,7 +501,7 @@
     --adp-font-size: 14px;
     --adp-width: 246px;
     --adp-z-index: 100;
-    --adp-padding: 4px;
+    --adp-padding: 1rem;
     --adp-grid-areas: "nav""body""timepicker""buttons";
     --adp-transition-duration: .3s;
     --adp-transition-ease: ease-out;
@@ -795,10 +801,14 @@
     grid-area: buttons
 }
 
-.air-datepicker--buttons,
-.air-datepicker--time {
+.air-datepicker--buttons {
     padding: var(--adp-padding);
     border-top: 1px solid var(--adp-border-color-inner)
+}
+
+.air-datepicker--time {
+    padding: var(--adp-padding);
+    border-top: 0;
 }
 
 .air-datepicker-overlay {
