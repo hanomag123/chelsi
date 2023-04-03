@@ -598,6 +598,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+const video = document.getElementById('preloadvideo');
+if (video) {
+video.addEventListener('ended',myHandler,false);
+function myHandler() {
+    modalHandler.apply(event.target)
+}
+}
+const preloader = document.getElementById('preloader');
+window.onload = function() {
+    if (preloader) {
+        preloader.style.opacity = "0"; setTimeout(() => preloader.style.display = 'none', 300);
+    }
+    if (video) {
+        video.play();
+    }
+}
 
 
 
