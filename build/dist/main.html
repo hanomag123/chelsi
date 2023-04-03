@@ -715,24 +715,6 @@
     <script src="assets/js/temp.js"></script>
     <script src="assets/js/vendor.js"></script>
     <script src="assets/js/app.js"></script>
-
-    <script>
-    const video = document.getElementById('preloadvideo');
-    if (video) {
-    video.addEventListener('ended',myHandler,false);
-    function myHandler() {
-        modalHandler.apply(event.target)
-    }
-    }
-    window.onload = function() {
-        if (preloader) {
-            preloader.style.opacity = "0"; setTimeout(() => preloader.style.display = 'none', 300);
-        }
-        if (video) {
-            video.play();
-        }
-    }
-    </script>
 </body>
 
 </html>
