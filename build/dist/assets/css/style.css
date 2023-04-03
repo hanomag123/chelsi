@@ -419,14 +419,14 @@ video {
 .z-\[-1\] {
   z-index: -1;
 }
-.z-\[100\] {
-  z-index: 100;
-}
 .-z-\[1\] {
   z-index: -1;
 }
 .z-10 {
   z-index: 10;
+}
+.z-\[100\] {
+  z-index: 100;
 }
 .z-\[1001\] {
   z-index: 1001;
@@ -1317,6 +1317,12 @@ textarea {
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
 }
 
 .preloader {

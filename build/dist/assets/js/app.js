@@ -78,19 +78,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let handler;
 
-  function scrollAdd(){
-      /* ... */
-      handler = throttle(function(event){
-          scrollHeader();
-      }, 500);
-      document.addEventListener('scroll', handler, false);
+  function scrollAdd() {
+    /* ... */
+    handler = throttle(function (event) {
+      scrollHeader();
+    }, 500);
+    document.addEventListener('scroll', handler, false);
   }
-  
-  function scrollRemove(){
-      /* ... */
-      document.removeEventListener('scroll', handler, false);
+
+  function scrollRemove() {
+    /* ... */
+    document.removeEventListener('scroll', handler, false);
   }
-  
+
   if (xl.matches) {
     scrollAdd()
     document.removeEventListener('scroll', scrollHeader)
@@ -98,34 +98,34 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener('scroll', scrollHeader)
     scrollRemove()
   }
-  
-    xl.addEventListener('change', () => {
-      if (xl.matches) {
-        document.removeEventListener('scroll', scrollHeader);
-        scrollAdd()
-      } else {
-        document.addEventListener('scroll', scrollHeader)
-        scrollRemove()
-      }
-    })
-  
-    function disableScroll() {
-      // Get the current page scroll position
-      const scrollTop = window.pageYOffset  || document.documentElement.scrollTop;
-      const scrollLeft = window.pageXOffset  || document.documentElement.scrollLeft;
-      document.documentElement.style.setProperty('scroll-behavior', 'auto')
-    
-          // if any scroll is attempted, set this to the previous value
-          window.onscroll = function() {
-              window.scrollTo(scrollLeft, scrollTop);
-          };
+
+  xl.addEventListener('change', () => {
+    if (xl.matches) {
+      document.removeEventListener('scroll', scrollHeader);
+      scrollAdd()
+    } else {
+      document.addEventListener('scroll', scrollHeader)
+      scrollRemove()
+    }
+  })
+
+  function disableScroll() {
+    // Get the current page scroll position
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    document.documentElement.style.setProperty('scroll-behavior', 'auto')
+
+    // if any scroll is attempted, set this to the previous value
+    window.onscroll = function () {
+      window.scrollTo(scrollLeft, scrollTop);
+    };
   }
-  
-   function enableScroll() {
+
+  function enableScroll() {
     document.documentElement.style.setProperty('scroll-behavior', null)
-    window.onscroll = function() {};
+    window.onscroll = function () { };
   }
-  
+
   var prevScrollpos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
   function scrollHeader() {
     var currentScrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
     prevScrollpos = currentScrollPos;
   };
 
-  function initHeader () {
+  function initHeader() {
     var currentScrollPos = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
     const num = xl.matches ? 50 : 150;
     if (currentScrollPos > num) {
@@ -401,7 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
         onShow: () => {
           date.$el.classList.add('havetext');
         },
-        onHide: () => {          
+        onHide: () => {
           if (!date.$el.value) {
             date.$el.classList.remove('havetext');
           } else {
@@ -433,7 +433,7 @@ document.addEventListener("DOMContentLoaded", () => {
         onShow: () => {
           airPick.$el.classList.add('havetext');
         },
-        onHide: () => {          
+        onHide: () => {
           if (!airPick.$el.value) {
             airPick.$el.classList.remove('havetext');
           }
@@ -495,92 +495,105 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  let menuBtns = document.querySelectorAll('.filter-btn');
+  let menuItemsContainer = document.querySelector('.menuPage-menuContent__menuItemsContainer');
+  let menuLeft = document.querySelector('.menuPage-menuContent__leftBlock');
+  let menuRight = document.querySelector('.menuPage-menuContent__rightBlock');
+  let hiddenBlock = document.querySelector('.menuPage-menuContent__hiddenHelpBlock');
+  let menuPageLeftBlock = document.querySelector('.menuPage-menuContent_leftBlock');
+  let counter = 0;
+
+  if (window.matchMedia("(min-width: 1024px)").matches) {
+    menuBtns.forEach(e => {
+      e.addEventListener('click', function () {
+        menuBtns.forEach(menuBtn => {
+          menuBtn.classList.remove('active');
+        });
+        this.classList.add('active');
+        menuPageLeftBlock.innerHTML = this.innerHTML;
+        let menuItems = this.nextElementSibling.querySelectorAll('.menuPage-menuContent__menuItem');
+        counter = 0;
+        menuLeft.innerHTML = ''
+        menuRight.innerHTML = ''
+
+        menuItems.forEach((e, id) => {
+
+          if (id % 2 == 0 && counter < menuItems.length - 1) {
+            let a = document.createElement('div');
+            a.classList.add('helperContainer');
+            a.innerHTML = e.innerHTML;
+            menuLeft.appendChild(a);
+            counter + 1;
+          } else if (id % 2 != 0 && counter < menuItems.length - 1) {
+            let a = document.createElement('div');
+            a.classList.add('helperContainer');
+            a.innerHTML = e.innerHTML;
+            menuRight.appendChild(a);
+            counter + 1;
+          }
+
+        });
+
+        let menuContentSwiper = new Swiper(".menuPage-menuContent__swiper", {
+          grabCursor: true,
+          loop: true,
+          navigation: {
+            nextEl: ".menuPage-menuContent__next",
+            prevEl: ".menuPage-menuContent__prev",
+          },
+        });
+
+      });
+
+
+    });
+  }
+
+  if (window.matchMedia("(max-width: 1024px)").matches) {
+    menuBtns.forEach(e => {
+      e.addEventListener('click', el => {
+
+        menuBtns.forEach(el => {
+          el.classList.remove('activeBreadCrumbs');
+        });
+        e.classList.add('activeBreadCrumbs');
+
+        menuItemsContainer.innerHTML = e.nextElementSibling.innerHTML;
+
+
+        let menuContentSwiper = new Swiper(".menuPage-menuContent__swiper", {
+          grabCursor: true,
+          loop: true,
+          navigation: {
+            nextEl: ".menuPage-menuContent__next",
+            prevEl: ".menuPage-menuContent__prev",
+          },
+        });
+      });
+
+
+    });
+  }
+
+  if (location.pathname === '/menu' || '/menu.html') {
+    const search = location.search;
+    if (location.search) {
+      const searchIndex = +search.match(/\?category=(\d)/)[1];
+      if (typeof searchIndex === 'number') {
+        const button = document.querySelector(`[data-item='${searchIndex}]`);
+        if (button) {
+          button.click();
+        }
+      }
+    } else {
+      if (menuBtns.length) {
+        menuBtns[0].click();
+      }
+    }
+  }
+
+
+
 
 
 });
-
-let menuBtns = document.querySelectorAll('.filter-btn');
-let menuItemsContainer = document.querySelector('.menuPage-menuContent__menuItemsContainer');
-let menuLeft = document.querySelector('.menuPage-menuContent__leftBlock');
-let menuRight = document.querySelector('.menuPage-menuContent__rightBlock');
-let hiddenBlock = document.querySelector('.menuPage-menuContent__hiddenHelpBlock');
-let menuPageLeftBlock = document.querySelector('.menuPage-menuContent_leftBlock');
-let counter = 0;
-
-if (window.matchMedia("(min-width: 1024px)").matches) {
-  menuBtns.forEach(e => {
-    e.addEventListener('click', function () {
-      menuBtns.forEach(menuBtn => {
-        menuBtn.classList.remove('active');
-      });
-      this.classList.add('active');
-      menuPageLeftBlock.innerHTML = this.innerHTML;
-      let menuItems = this.nextElementSibling.querySelectorAll('.menuPage-menuContent__menuItem');
-      counter = 0;
-      menuLeft.innerHTML = ''
-      menuRight.innerHTML = ''
-  
-      menuItems.forEach((e, id) => {
-  
-        if (id % 2 == 0 && counter < menuItems.length - 1) {
-          let a = document.createElement('div');
-          a.classList.add('helperContainer');
-          a.innerHTML = e.innerHTML;
-          menuLeft.appendChild(a);
-          counter + 1;
-        } else if (id % 2 != 0 && counter < menuItems.length - 1) {
-          let a = document.createElement('div');
-          a.classList.add('helperContainer');
-          a.innerHTML = e.innerHTML;
-          menuRight.appendChild(a);
-          counter + 1;
-        }
-  
-      });
-
-      let menuContentSwiper = new Swiper(".menuPage-menuContent__swiper", {
-        grabCursor: true,
-        loop: true,
-        navigation: {
-          nextEl: ".menuPage-menuContent__next",
-          prevEl: ".menuPage-menuContent__prev",
-        },
-      });
-  
-    });
-  
-  
-  });
-}
-
-if (window.matchMedia("(max-width: 1024px)").matches) {
-  menuBtns.forEach(e => {
-    e.addEventListener('click', el => {
-
-      menuBtns.forEach(el => {
-        el.classList.remove('activeBreadCrumbs');
-      });
-      e.classList.add('activeBreadCrumbs');
-      
-      menuItemsContainer.innerHTML = e.nextElementSibling.innerHTML;
-
-
-      let menuContentSwiper = new Swiper(".menuPage-menuContent__swiper", {
-        grabCursor: true,
-        loop: true,
-        navigation: {
-          nextEl: ".menuPage-menuContent__next",
-          prevEl: ".menuPage-menuContent__prev",
-        },
-      });
-    });
-  
-  
-  });
-}
-
-
-
-if (menuBtns.length) {
-  menuBtns[0].click();
-}
