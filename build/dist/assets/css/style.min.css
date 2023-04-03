@@ -340,6 +340,9 @@ video {
 .brnone br {
   display: none;
 }
+.pointer-events-none {
+  pointer-events: none;
+}
 .visible {
   visibility: visible;
 }
@@ -423,6 +426,9 @@ video {
 }
 .z-10 {
   z-index: 10;
+}
+.z-\[100\] {
+  z-index: 100;
 }
 .z-\[1001\] {
   z-index: 1001;
@@ -804,6 +810,9 @@ video {
 .bg-dblue {
   background-color: var(--dblue);
 }
+.bg-white {
+  background-color: var(--white);
+}
 .bg-\[rgba\(0\2c 0\2c 0\2c 0\.6\)\] {
   background-color: rgba(0,0,0,0.6);
 }
@@ -949,6 +958,14 @@ video {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-transform, -webkit-filter, -webkit-backdrop-filter;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+.transition-opacity {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.duration-300 {
+  transition-duration: 300ms;
 }
 .text-14 {
   font-size: 1.4rem;
@@ -1304,6 +1321,128 @@ textarea {
   padding: 0.2em 0;
 }
 
+button {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dblue);
+  z-index: 100000000000;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  transition: 0.3s opacity;
+  will-change: opacity;
+}
+.preloader .spin {
+  -webkit-transform: scale(3);
+          transform: scale(3);
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+}
+@media (max-width: 500px) {
+  .lds-ring {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 0.2rem solid var(--white);
+  border-radius: 50%;
+  -webkit-animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+          animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: var(--white) transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+  -webkit-animation-delay: -0.45s;
+          animation-delay: -0.45s;
+  z-index: 1;
+}
+
+.lds-ring div:nth-child(2) {
+  -webkit-animation-delay: -0.3s;
+          animation-delay: -0.3s;
+  z-index: 1;
+}
+
+.lds-ring div:nth-child(3) {
+  -webkit-animation-delay: -0.15s;
+          animation-delay: -0.15s;
+  z-index: 1;
+}
+
+.lds-ring .logo {
+  -webkit-animation: none;
+          animation: none;
+  border-color: none;
+  background-color: transparent;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background-color: var(--white);
+}
+.lds-ring .logo img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.lds-ring .logo svg, .lds-ring .logo img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+}
+
+@-webkit-keyframes lds-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes lds-ring {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
 html {
   box-sizing: border-box;
   font-size: 0.5208333333vw;
@@ -4200,12 +4339,22 @@ a img {
   -ms-flex-align: center;
       align-items: center;
   font-size: 11px;
-  height: 17px;
+  height: 2rem;
   background: linear-gradient(to right, var(--adp-time-track-color), var(--adp-time-track-color)) left 50%/100% var(--adp-time-track-height) no-repeat;
+}
+@media (max-width: 1024px) {
+  .air-datepicker-time--row {
+    height: 3rem;
+  }
 }
 
 .air-datepicker-time--row:first-child {
-  margin-bottom: 4px;
+  margin-bottom: 0.5rem;
+}
+@media (max-width: 1024px) {
+  .air-datepicker-time--row:first-child {
+    margin-bottom: 1rem;
+  }
 }
 
 .air-datepicker-time--row input[type=range] {
@@ -4336,7 +4485,7 @@ a img {
   --adp-font-size: 14px;
   --adp-width: 246px;
   --adp-z-index: 100;
-  --adp-padding: 4px;
+  --adp-padding: 1rem;
   --adp-grid-areas: "nav""body""timepicker""buttons";
   --adp-transition-duration: .3s;
   --adp-transition-ease: ease-out;
@@ -4651,12 +4800,13 @@ a img {
 
 .air-datepicker--buttons {
   grid-area: buttons;
-}
-
-.air-datepicker--buttons,
-.air-datepicker--time {
   padding: var(--adp-padding);
   border-top: 1px solid var(--adp-border-color-inner);
+}
+
+.air-datepicker--time {
+  padding: var(--adp-padding);
+  border-top: 0;
 }
 
 .air-datepicker-overlay {
