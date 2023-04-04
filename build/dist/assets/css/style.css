@@ -3106,7 +3106,7 @@ select:-webkit-autofill:focus {
   outline: none;
   border-color: var(--white);
 }
-.custom-input:focus + .input-placeholder, .custom-input:valid + .input-placeholder, .custom-input:disabled + .input-placeholder {
+.custom-input:focus + .input-placeholder, .custom-input:disabled + .input-placeholder {
   font-size: 1rem;
   line-height: 1.4rem;
   opacity: 1;
@@ -4031,6 +4031,7 @@ a img {
 .air-datepicker-cell.-disabled- {
   cursor: default;
   color: var(--adp-color-disabled);
+  opacity: 0.5;
 }
 
 .air-datepicker-cell.-disabled-.-focus- {
