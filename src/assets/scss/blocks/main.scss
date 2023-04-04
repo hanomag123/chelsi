@@ -374,7 +374,7 @@ select:-webkit-autofill:focus {
     outline: none;
     border-color: var(--white);
   }
-  &:focus + .input-placeholder, &:valid + .input-placeholder, &:disabled + .input-placeholder {
+  &:focus + .input-placeholder, &:disabled + .input-placeholder {
     font-size: 1rem;
     line-height: 1.4rem;
     opacity: 1;

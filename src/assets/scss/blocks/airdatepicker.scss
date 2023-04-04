@@ -70,7 +70,8 @@
 
 .air-datepicker-cell.-disabled- {
     cursor: default;
-    color: var(--adp-color-disabled)
+    color: var(--adp-color-disabled);
+    opacity: 0.5;
 }
 
 .air-datepicker-cell.-disabled-.-focus- {
