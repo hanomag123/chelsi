@@ -398,6 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
         container: xl.matches ? '' : el.parentElement,
         isMobile: xl.matches,
         autoClose: true,
+        minDate: new Date(),
         onShow: () => {
           date.$el.classList.add('havetext');
         },
