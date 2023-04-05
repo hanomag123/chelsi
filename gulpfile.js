@@ -120,12 +120,12 @@ function css(cb) {
     // )
     .pipe(removeComments())
     .pipe(dest(path.build.css))
-    .pipe(
-      rename({
-        suffix: ".min",
-        extname: ".css",
-      })
-    )
+    // .pipe(
+    //   rename({
+    //     suffix: ".min",
+    //     extname: ".css",
+    //   })
+    // )
     .pipe(dest(path.build.css))
     .pipe(browserSync.reload({ stream: true }));
 
@@ -157,11 +157,11 @@ function cleanCss(cb) {
         },
       })
     )
-    .pipe(
-      autoprefixer({
-        cascade: true,
-      })
-    )
+    // .pipe(
+    //   autoprefixer({
+    //     cascade: true,
+    //   })
+    // )
     .pipe(cssbeautify())
     .pipe(dest(path.build.css))
     .pipe(
@@ -173,12 +173,6 @@ function cleanCss(cb) {
       })
     )
     .pipe(removeComments())
-    .pipe(
-      rename({
-        suffix: ".min",
-        extname: ".css",
-      })
-    )
     .pipe(dest(path.build.css))
     .pipe(browserSync.reload({ stream: true }));
 
