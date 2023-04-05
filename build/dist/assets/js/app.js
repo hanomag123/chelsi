@@ -511,11 +511,12 @@ document.addEventListener("DOMContentLoaded", () => {
           menuBtn.classList.remove('active');
         });
         this.classList.add('active');
+        const name = this.dataset.item;
         menuPageLeftBlock.innerHTML = this.innerHTML;
         let menuItems = this.nextElementSibling.querySelectorAll('.menuPage-menuContent__menuItem');
         counter = 0;
-        menuLeft.innerHTML = ''
-        menuRight.innerHTML = ''
+        menuLeft.innerHTML = '';
+        menuRight.innerHTML = '';
 
         menuItems.forEach((e, id) => {
 
@@ -538,11 +539,28 @@ document.addEventListener("DOMContentLoaded", () => {
         let menuContentSwiper = new Swiper(".menuPage-menuContent__swiper", {
           grabCursor: true,
           loop: true,
+          clickable: true,
+          slideToClickedSlide: true,
           navigation: {
             nextEl: ".menuPage-menuContent__next",
             prevEl: ".menuPage-menuContent__prev",
           },
+          on: {
+            init: function (v) {
+              if (name) {
+                const item = v.$wrapperEl[0].querySelector(`.swiper-slide[data-swiperItem="${name}"]`)
+                if (item) {
+                  const arr = [...item.parentElement.children]
+                  const index = arr.indexOf(item)
+                  setTimeout(() => {
+                    v.slideTo(index);
+                  }, 300)
+                }
+              }
+            } 
+          }
         });
+
 
       });
 
@@ -552,45 +570,65 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (window.matchMedia("(max-width: 1024px)").matches) {
     menuBtns.forEach(e => {
-      e.addEventListener('click', el => {
+      e.addEventListener('click', function (el) {
 
         menuBtns.forEach(el => {
           el.classList.remove('activeBreadCrumbs');
         });
         e.classList.add('activeBreadCrumbs');
-
+        const name = this.dataset.item;
         menuItemsContainer.innerHTML = e.nextElementSibling.innerHTML;
 
 
         let menuContentSwiper = new Swiper(".menuPage-menuContent__swiper", {
           grabCursor: true,
           loop: true,
+          clickable: true,
+          slideToClickedSlide: true,
           navigation: {
             nextEl: ".menuPage-menuContent__next",
             prevEl: ".menuPage-menuContent__prev",
           },
+          on: {
+            init: function (v) {
+              if (name) {
+                const item = v.$wrapperEl[0].querySelector(`.swiper-slide[data-swiperItem="${name}"]`)
+                if (item) {
+                  const arr = [...item.parentElement.children]
+                  const index = arr.indexOf(item)
+                  setTimeout(() => {
+                    v.slideTo(index);
+                  }, 300)
+                }
+              }
+            } 
+          }
         });
       });
 
 
     });
   }
+  let params = new URL(document.location).searchParams;
+  let name = params.get("category");
+  console.log(name, 'searchParams')
 
-  if (location.pathname === '/menu' || '/menu.html') {
-    const search = location.search;
-    if (search) {
-      const searchMatch = search.match(/(?!\?category=)(\d+)/);
-      if (searchMatch) {
-        const number = +searchMatch[0];
-        const button = document.querySelector(`[data-item='${number}]`);
+  const search = location.search;
+  if (search) {
+    const searchMatch = search.match(/\?category=(.*)&?/);
+    if (searchMatch.length && searchMatch[1]) {
+      const number = searchMatch[1].replaceAll('%20', ' ');
+      console.log(searchMatch)
+      if (number) {
+        const button = document.querySelector(`[data-item="${number}"]`);
         if (button) {
           button.click();
         }
       }
-    } else {
-      if (menuBtns.length) {
-        menuBtns[0].click();
-      }
+    }
+  } else {
+    if (menuBtns.length) {
+      menuBtns[0].click();
     }
   }
 
@@ -602,17 +640,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const video = document.getElementById('preloadvideo');
 if (video) {
-video.addEventListener('ended',myHandler,false);
-function myHandler() {
-  video.style.opacity = "0"; setTimeout(() => video.style.display = 'none', 300);
-}
+  video.addEventListener('ended', myHandler, false);
+  function myHandler() {
+    video.style.opacity = "0"; setTimeout(() => video.style.display = 'none', 300);
+  }
 }
 const preloader = document.getElementById('preloader');
-window.onload = function() {
-    if (preloader) {
-        preloader.style.opacity = "0"; setTimeout(() => preloader.style.display = 'none', 300);
-    }
-    if (video) {
-        video.play();
-    }
+window.onload = function () {
+  if (preloader) {
+    preloader.style.opacity = "0"; setTimeout(() => preloader.style.display = 'none', 300);
+  }
+  if (video) {
+    video.play();
+  }
 }
