@@ -39,15 +39,6 @@
 
 
 .menuPage {
-    padding-top: 14rem;
-
-    @include breakpoint($sm-bp) {
-        padding-top: 5rem;
-
-        .breadCrumbs {
-            display: none;
-        }
-    }
 
     h2,h1 {
         margin-top: 4rem;
