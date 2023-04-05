@@ -609,29 +609,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
   }
-  let params = new URL(document.location).searchParams;
-  let name = params.get("category");
-  console.log(name, 'searchParams')
-
-  const search = location.search;
-  if (search) {
-    const searchMatch = search.match(/\?category=(.*)&?/);
-    if (searchMatch.length && searchMatch[1]) {
-      const number = searchMatch[1].replaceAll('%20', ' ');
-      console.log(searchMatch)
-      if (number) {
-        const button = document.querySelector(`[data-item="${number}"]`);
-        if (button) {
-          button.click();
-        }
-      }
+  const params = new URL(document.location).searchParams;
+  const category = params.get("category");
+  if (category) {
+    const button = document.querySelector(`[data-item="${category}"]`);
+    if (button) {
+      button.click();
     }
   } else {
     if (menuBtns.length) {
       menuBtns[0].click();
     }
   }
-
 
 
 
